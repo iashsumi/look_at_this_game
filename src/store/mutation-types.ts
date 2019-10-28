@@ -1,0 +1,1 @@
+export const DRAWER_UPDATE = 'DRAWER_UPDATE'
