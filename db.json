@@ -1,9 +1,44 @@
 {
-  "posts": [
+  "games": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "sampleA",
+      "released_at": "2000-01-01",
+      "publisher": "任天堂",
+      "kind": "SFC",
+      "description": "説明のサンプル",
+      "sales": "100000",
+      "genre": "RPG"
+    },
+    {
+      "id": 2,
+      "title": "sampleB",
+      "released_at": "2000-01-01",
+      "publisher": "任天堂",
+      "kind": "SFC",
+      "description": "説明のサンプル",
+      "sales": "100000",
+      "genre": "RPG"
+    },
+    {
+      "id": 3,
+      "title": "sampleC",
+      "released_at": "2000-01-01",
+      "publisher": "任天堂",
+      "kind": "SFC",
+      "description": "説明のサンプル",
+      "sales": "100000",
+      "genre": "RPG"
+    },
+    {
+      "id": 4,
+      "title": "sampleD",
+      "released_at": "2000-01-01",
+      "publisher": "任天堂",
+      "kind": "SFC",
+      "description": "説明のサンプル",
+      "sales": "100000",
+      "genre": "RPG"
     }
   ],
   "comments": [
