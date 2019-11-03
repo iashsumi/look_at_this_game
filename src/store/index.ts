@@ -1,28 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as types from '@/store/mutation-types'
+import getters from './getters'
+import actions from './actions'
+import mutations from './mutations'
 
 Vue.use(Vuex)
 
+const state = {
+  players: [],
+  videos: [],
+  paging_key: null
+}
+
 export default new Vuex.Store({
-  state: {
-    drawer: false
-  },
-  getters: {
-    drawer: state => {
-      return state.drawer
-    }
-  },
-  mutations: {
-    [types.DRAWER_UPDATE] (state) {
-      state.drawer = !state.drawer
-    }
-  },
-  actions: {
-    // [types.DRAWER_UPDATE] ({ commit }) {
-    //   commit(types.DRAWER_UPDATE)
-    // }
-  },
-  modules: {
-  }
+  state,
+  actions,
+  getters,
+  mutations
 })

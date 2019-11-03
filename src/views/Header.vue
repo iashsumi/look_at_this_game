@@ -14,20 +14,13 @@
       >
       <v-list dense>
         <v-list-item>
-          <v-list-item-action>
-            <v-icon>home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
+          <router-link to="/">Intro</router-link>
         </v-list-item>
         <v-list-item>
-          <v-list-item-action>
-            <v-icon>contact_mail</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
-          </v-list-item-content>
+          <router-link to="/players">実況者</router-link>
+        </v-list-item>
+        <v-list-item>
+          <router-link to="/videos">最新情報</router-link>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>

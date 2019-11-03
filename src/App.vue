@@ -2,23 +2,8 @@
   <v-app>
     <Header/>
     <!-- <Navigation/> -->
-
     <v-content>
-      <p>最近発売されたゲーム</p>
-      <v-row no-gutters>
-        <v-col
-          v-for="n in 12"
-          :key="n"
-          cols="12"
-          sm="4"
-        >
-          <Card/>
-        </v-col>
-      </v-row>
-      <template v-slot:activator="{ on }">
-        <p>あなたにオススメのゲーム</p>
-      </template>
-      <span>Codepen</span>
+      <router-view></router-view>
     </v-content>
     <v-footer
       color="indigo"
@@ -33,14 +18,14 @@
 import Vue from 'vue'
 // import Navigation from '@/views/Navigation.vue'
 import Header from '@/views/Header.vue'
-import Card from '@/components/Card.vue'
+// import Card from '@/components/Card.vue'
 
 export default Vue.extend({
   name: 'App',
   components: {
     // Navigation,
-    Header,
-    Card
+    Header
+    // Card
   },
   data: () => ({
     //
