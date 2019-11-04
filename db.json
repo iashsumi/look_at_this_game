@@ -8,7 +8,10 @@
       "kind": "SFC",
       "description": "説明のサンプル",
       "sales": "100000",
-      "genre": "RPG"
+      "genre": "RPG",
+      "avatar": "aaaaaa",
+      "avatar_credit": "zaqwsx"
+
     },
     {
       "id": 2,

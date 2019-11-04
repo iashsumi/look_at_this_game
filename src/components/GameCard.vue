@@ -1,79 +1,63 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="344"
+    max-width="860"
     outlined
+    :elevation="3"
   >
-    <v-list-item three-line>
-      <v-list-item-content>
-        <div class="overline header">
-          <v-chip>{{ game.kind }}</v-chip>
-          <span>{{ game.genre }}</span>
-        </div>
-        <v-list-item-title class="headline mb-1">{{ game.title }}</v-list-item-title>
-      </v-list-item-content>
 
-      <!-- <v-list-item-content>
-        <v-list-item-title>販売元</v-list-item-title>
-        <v-list-item-subtitle>{{ game.publisher }}</v-list-item-subtitle>
+    <v-list-item three-line>
+      <div>
+        <v-list-item-avatar
+          tile
+          size="80"
+          color="grey"
+        >
+          <v-img></v-img>
+        </v-list-item-avatar>
+        <v-list-item-subtitle>作成：{{ game.avatar_credit }}</v-list-item-subtitle>
+      </div>
+      <v-list-item-content>
+        <v-list-item-title class="headline">{{ game.title }}</v-list-item-title>
+        <v-list-item-subtitle>発売日：{{ game.released_at }}</v-list-item-subtitle>
+        <v-list-item-subtitle>販売本数:{{ game.sales }}</v-list-item-subtitle>
+        <v-list-item-subtitle>販売元:{{ game.publisher }}</v-list-item-subtitle>
+        <span class="overline">
+          <v-chip class="ma-2" :class="kindColor(game.kind)">{{ game.kind }}</v-chip>
+          <v-chip class="ma-2" :class="genreColor(game.genre)">{{ game.genre }}</v-chip>
+        </span>
       </v-list-item-content>
-      <v-list-item-avatar
-        tile
-        size="80"
-        color="grey"
-      ></v-list-item-avatar> -->
     </v-list-item>
   </v-card>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 
-// interface typkindColors{(key:string, val:string) :void};
-export default Vue.extend({
-  name: 'GameCard',
-  // data: () => ({
-  //   kindColors: {
-  //     sfc: 'primary'
-  //   }
-  // }),
-  props: {
-    game: {
-      tyep: Object,
-      required: true
+@Component
+export default class GameCard extends Vue {
+  kinds = { sfc: 'primary', default: 'default' }
+  genres = { rpg: 'primary', default: 'default' }
+
+  @Prop()
+  public game?: any;
+
+  kindColor (kind: string): string {
+    switch (kind) {
+      case 'SFC':
+        return this.kinds.sfc
+      default:
+        return this.kinds.default
     }
   }
-  // methods: {
-  //   kind_color (kind: string) : (string) {
-  //     return this.kindColors
-  //   }
-  // }
-})
-</script>
 
-<style lang="scss">
-#header {
-  margin-bottom: 3px
+  genreColor (genre: string): string {
+    switch (genre) {
+      case 'RPG':
+        return this.genres.rpg
+      default:
+        return this.genres.default
+    }
+  }
 }
-
-// #app {
-//   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-align: center;
-//   color: #2c3e50;
-// }
-
-// #nav {
-//   padding: 30px;
-
-//   a {
-//     font-weight: bold;
-//     color: #2c3e50;
-
-//     &.router-link-exact-active {
-//       color: #42b983;
-//     }
-//   }
-// }
-</style>
+</script>

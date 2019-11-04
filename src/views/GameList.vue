@@ -7,11 +7,12 @@
         v-for="game in this.games.games"
         :key="game.id"
         cols="12"
-        sm="4"
+        sm="12"
       >
         <GameCard
           :game="game"
         />
+        <br>
       </v-col>
     </v-row>
   </div>
