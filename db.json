@@ -51,7 +51,16 @@
       "postId": 1
     }
   ],
-  "profile": {
-    "name": "typicode"
+  "Game": {
+    "id": 1,
+    "title": "sampleA",
+    "released_at": "2000-01-01",
+    "publisher": "任天堂",
+    "kind": "SFC",
+    "description": "説明のサンプル",
+    "sales": "100000",
+    "genre": "RPG",
+    "avatar": "aaaaaa",
+    "avatar_credit": "zaqwsx"
   }
 }

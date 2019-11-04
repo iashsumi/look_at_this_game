@@ -4,6 +4,7 @@
     max-width="860"
     outlined
     :elevation="3"
+    @click="goDetail"
   >
 
     <v-list-item three-line>
@@ -58,6 +59,10 @@ export default class GameCard extends Vue {
       default:
         return this.genres.default
     }
+  }
+
+  goDetail (): void {
+    this.$router.push({ name: 'Game', params: { id: this.game.id } })
   }
 }
 </script>

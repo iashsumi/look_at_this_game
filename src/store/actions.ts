@@ -11,5 +11,15 @@ export default {
         commit(types.FETCH_GAMES, games)
       })
       .catch(err => { throw err })
+  },
+  fetchGame: ({ commit, state }: { commit: any, state: any }) => {
+    return Games.show()
+      .then((game) => {
+        console.log(types.FETCH_GAME)
+        console.log(game)
+
+        commit(types.FETCH_GAME, game)
+      })
+      .catch(err => { throw err })
   }
 }

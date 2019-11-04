@@ -10,7 +10,8 @@ Vue.use(Vuex)
 const state = {
   list: {
     games: []
-  }
+  },
+  game: null
 }
 
 export default new Vuex.Store({
@@ -18,24 +19,4 @@ export default new Vuex.Store({
   actions,
   getters,
   mutations
-  // state: {
-  //   drawer: false
-  // },
-  // getters: {
-  //   drawer: state => {
-  //     return state.drawer
-  //   }
-  // },
-  // mutations: {
-  //   [types.DRAWER_UPDATE] (state) {
-  //     state.drawer = !state.drawer
-  //   }
-  // },
-  // actions: {
-  //   // [types.DRAWER_UPDATE] ({ commit }) {
-  //   //   commit(types.DRAWER_UPDATE)
-  //   // }
-  // },
-  // modules: {
-  // }
 })
