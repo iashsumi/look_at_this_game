@@ -11,18 +11,19 @@
       <div>
         <v-list-item-avatar
           tile
-          size="80"
+          size="138"
           color="grey"
         >
-          <v-img></v-img>
+          <v-img src="https://images-na.ssl-images-amazon.com/images/I/61sKugc3qzL._AC_.jpg"></v-img>
         </v-list-item-avatar>
-        <v-list-item-subtitle>作成：{{ game.avatar_credit }}</v-list-item-subtitle>
+        <!-- <v-list-item-subtitle>作成：{{ game.avatar_credit }}</v-list-item-subtitle> -->
       </div>
       <v-list-item-content>
         <v-list-item-title class="headline">{{ game.title }}</v-list-item-title>
         <v-list-item-subtitle>発売日：{{ game.released_at }}</v-list-item-subtitle>
-        <v-list-item-subtitle>販売本数:{{ game.sales }}</v-list-item-subtitle>
         <v-list-item-subtitle>販売元:{{ game.publisher }}</v-list-item-subtitle>
+        <v-list-item-subtitle>実況者数:{{ game.sales }}</v-list-item-subtitle>
+        <v-list-item-subtitle>タグ数:{{ game.sales }}</v-list-item-subtitle>
         <span class="overline">
           <v-chip class="ma-2" :class="kindColor(game.kind)">{{ game.kind }}</v-chip>
           <v-chip class="ma-2" :class="genreColor(game.genre)">{{ game.genre }}</v-chip>
