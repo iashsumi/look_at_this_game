@@ -6,5 +6,11 @@ export default {
   },
   [types.FETCH_GAME] (state: any, payload: any) {
     state.game = payload
+  },
+  [types.FETCH_RSS] (state: any, payload: any) {
+    state.rss = payload
+  },
+  [types.FETCH_PLAYERS] (state: any, payload: any) {
+    state.players = payload
   }
 }

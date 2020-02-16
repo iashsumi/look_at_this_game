@@ -11,7 +11,9 @@ const state = {
   list: {
     games: []
   },
-  game: null
+  players: [],
+  game: null,
+  rss: []
 }
 
 export default new Vuex.Store({

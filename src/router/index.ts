@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Introduction from '../views/Introduction.vue'
-import GameList from '../views/GameList.vue'
-import Game from '../views/Game.vue'
+// import GameList from '../views/GameList.vue'
+// import Game from '../views/Game.vue'
+// import Rss from '../views/Rss.vue'
+import Players from '../views/Players.vue'
+import PlayerDetail from '../views/PlayerDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -12,24 +15,31 @@ const routes = [
     name: 'Introduction',
     component: Introduction
   },
+  // {
+  //   path: '/gamelist',
+  //   name: 'GameList',
+  //   component: GameList
+  // },
+  // {
+  //   path: '/game/:id',
+  //   name: 'Game',
+  //   component: Game
+  // },
+  // {
+  //   path: '/rss',
+  //   name: 'Rss',
+  //   component: Rss
+  // },
   {
-    path: '/gamelist',
-    name: 'GameList',
-    component: GameList
+    path: '/players',
+    name: 'PLayers',
+    component: Players
   },
   {
-    path: '/game/:id',
-    name: 'Game',
-    component: Game
+    path: '/playerdetail',
+    name: 'PlayerDetail',
+    component: PlayerDetail
   }
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
 
 const router = new VueRouter({

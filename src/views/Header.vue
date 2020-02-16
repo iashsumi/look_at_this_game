@@ -25,6 +25,18 @@
             <v-list-item-title>gamelist</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item>
+          <router-link to="/rss">Rss</router-link> |
+          <v-list-item-content>
+            <v-list-item-title>Rss</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <router-link to="/players">実況者</router-link> |
+          <v-list-item-content>
+            <v-list-item-title>Players</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </div>
