@@ -26,9 +26,9 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
-          <router-link to="/rss">Rss</router-link> |
+          <router-link to="/videos">最新情報</router-link> |
           <v-list-item-content>
-            <v-list-item-title>Rss</v-list-item-title>
+            <v-list-item-title>Videos</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>

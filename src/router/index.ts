@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Introduction from '../views/Introduction.vue'
 // import GameList from '../views/GameList.vue'
 // import Game from '../views/Game.vue'
-// import Rss from '../views/Rss.vue'
+import Videos from '../views/Videos.vue'
 import Players from '../views/Players.vue'
 import PlayerDetail from '../views/PlayerDetail.vue'
 
@@ -25,11 +25,11 @@ const routes = [
   //   name: 'Game',
   //   component: Game
   // },
-  // {
-  //   path: '/rss',
-  //   name: 'Rss',
-  //   component: Rss
-  // },
+  {
+    path: '/videos',
+    name: 'Videos',
+    component: Videos
+  },
   {
     path: '/players',
     name: 'PLayers',

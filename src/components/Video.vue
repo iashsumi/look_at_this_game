@@ -10,7 +10,7 @@
         xs="12"
         md="3"
       >
-        <v-img :src="rss.thumbnail"></v-img>
+        <v-img :src="video.thumbnail"></v-img>
       </v-col>
       <v-col
         xs="12"
@@ -18,10 +18,10 @@
       >
         <v-list-item three-line>
           <v-list-item-content>
-            <v-list-item-title class="headline">{{ rss.title }}</v-list-item-title>
-            <v-list-item-subtitle>公開日：{{ rss.published }}</v-list-item-subtitle>
-            <v-list-item-subtitle>再生数: {{ rss.views }}</v-list-item-subtitle>
-            <v-list-item-subtitle>説明: {{ rss.description }}</v-list-item-subtitle>
+            <v-list-item-title class="headline">{{ video.title }}</v-list-item-title>
+            <v-list-item-subtitle>公開日：{{ video.published }}</v-list-item-subtitle>
+            <v-list-item-subtitle>再生数: {{ video.views }}</v-list-item-subtitle>
+            <v-list-item-subtitle>説明: {{ video.description }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-col>
@@ -33,12 +33,12 @@
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class Rss extends Vue {
+export default class Video extends Vue {
   @Prop()
-  public rss?: any;
+  public video?: any;
 
   goDetail (): void {
-    window.open(this.rss.link, '_blank')
+    window.open(this.video.link, '_blank')
   }
 }
 </script>

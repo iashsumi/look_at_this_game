@@ -4,13 +4,12 @@
       <v-col
         v-for="player in this.players"
         :key="player.id"
-        cols="12"
-        sm="3"
+        sm="12"
+        md="2"
       >
         <Player
           :player="player"
         />
-        <br>
       </v-col>
     </v-row>
   </div>

@@ -1,4 +1,24 @@
 {
+  "videos": [
+    {
+      "video_id": "yDDk_qiVl7s", 
+      "title": "堂島の龍、壊れる【龍が如く極２】＃３７", 
+      "link": "https://www.youtube.com/watch?v=yDDk_qiVl7s", 
+      "published": "2020/02/15", 
+      "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
+      "description": "なぜか小雪ちゃんの前では欲望を隠さない男\nチャンネル登録されると嬉しい→http://goo.gl/3ZTvNW\n【twitter】http://twitter.com/ushizawa",
+      "views": "124,130"
+    },
+    {
+      "video_id": "rE3B7asBlT0", 
+      "title": "こっちの映画の方が面白そう【龍が如く極２】＃３６", 
+      "link": "https://www.youtube.com/watch?v=rE3B7asBlT0&t=1105s", 
+      "published": "2020/02/14", 
+      "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
+      "description": "桐生一馬さん、また極道映画を観て泣く　チャンネル登録されると嬉しい→http://goo.gl/3ZTvNW【twitter】http://twitter.com/ushizawa",
+      "views": "124,130"
+    }
+  ],
   "players": [
     {
       "id": 1,
@@ -7,7 +27,7 @@
       "channel_url": "https://www.youtube.com/user/ushizawa16",
       "thumbnail": "https://yt3.ggpht.com/a/AGF-l78-uyq99dmQiRnsJ9usnXEvbfTleE2TelzBug=s288-c-k-c0xffffffff-no-rj-mo",
       "published": "2013/09/19",
-      "rss": [
+      "videos": [
         {
           "video_id": "yDDk_qiVl7s", 
           "title": "堂島の龍、壊れる【龍が如く極２】＃３７", 
@@ -80,7 +100,7 @@
       "channel_url": "https://www.youtube.com/channel/UCx1nAvtVDIsaGmCMSe8ofsQ",
       "thumbnail": "https://yt3.ggpht.com/a/AGF-l78c1NZxkQXjp5PMBIOgh-j9RCfNCfYB5VI-ZQ=s288-c-k-c0xffffffff-no-rj-mo",
       "published": "2016/03/31",
-      "rss": [
+      "videos": [
         {
           "video_id": "AWvoIdC9n4w", 
           "title": "真・ポケモンセンター本当に終了のお知らせ　verプラチナその２", 
@@ -99,7 +119,7 @@
       "channel_url": "https://www.youtube.com/user/ushizawa16",
       "thumbnail": "https://yt3.ggpht.com/a/AGF-l78-uyq99dmQiRnsJ9usnXEvbfTleE2TelzBug=s288-c-k-c0xffffffff-no-rj-mo",
       "published": "2013/09/19",
-      "rss": [
+      "videos": [
         {
           "video_id": "yDDk_qiVl7s", 
           "title": "堂島の龍、壊れる【龍が如く極２】＃３７", 
@@ -118,7 +138,7 @@
       "channel_url": "https://www.youtube.com/channel/UCx1nAvtVDIsaGmCMSe8ofsQ",
       "thumbnail": "https://yt3.ggpht.com/a/AGF-l78c1NZxkQXjp5PMBIOgh-j9RCfNCfYB5VI-ZQ=s288-c-k-c0xffffffff-no-rj-mo",
       "published": "2016/03/31",
-      "rss": [
+      "videos": [
         {
           "video_id": "AWvoIdC9n4w", 
           "title": "真・ポケモンセンター本当に終了のお知らせ　verプラチナその２", 
@@ -137,7 +157,7 @@
       "channel_url": "https://www.youtube.com/user/ushizawa16",
       "thumbnail": "https://yt3.ggpht.com/a/AGF-l78-uyq99dmQiRnsJ9usnXEvbfTleE2TelzBug=s288-c-k-c0xffffffff-no-rj-mo",
       "published": "2013/09/19",
-      "rss": [
+      "videos": [
         {
           "video_id": "yDDk_qiVl7s", 
           "title": "堂島の龍、壊れる【龍が如く極２】＃３７", 
@@ -156,7 +176,7 @@
       "channel_url": "https://www.youtube.com/channel/UCx1nAvtVDIsaGmCMSe8ofsQ",
       "thumbnail": "https://yt3.ggpht.com/a/AGF-l78c1NZxkQXjp5PMBIOgh-j9RCfNCfYB5VI-ZQ=s288-c-k-c0xffffffff-no-rj-mo",
       "published": "2016/03/31",
-      "rss": [
+      "videos": [
         {
           "video_id": "AWvoIdC9n4w", 
           "title": "真・ポケモンセンター本当に終了のお知らせ　verプラチナその２", 

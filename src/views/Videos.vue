@@ -1,15 +1,15 @@
 <template>
-  <div id="RssList">
+  <div id="Videos">
     <br>
     <v-row no-gutters>
       <v-col
-        v-for="info in this.rss.rss_informations"
-        :key="info.id"
+        v-for="video in this.videos"
+        :key="video.id"
         cols="12"
         sm="12"
       >
-        <RssInfo
-          :info="info"
+        <Video
+          :video="video"
         />
         <br>
       </v-col>
@@ -19,30 +19,30 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import RssInfo from '../components/RssInfo.vue'
+import Video from '../components/Video.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 @Component({
   components: {
-    RssInfo
+    Video
   }
 })
-export default class Rss extends Vue {
+export default class Videos extends Vue {
   disp: boolean = false
 
   /** methods */
-  private changeDisp (): void {
-    this.disp = !this.disp
-  }
+  // private changeDisp (): void {
+  //   this.disp = !this.disp
+  // }
 
   /** computed */
-  private get rss (): any {
-    return this.$store.getters.getRss
+  private get videos (): any {
+    return this.$store.getters.getVideos
   }
 
   /** ライフサイクルフック */
   private created () {
-    this.$store.dispatch('fetchRss')
+    this.$store.dispatch('fetchVideos')
       .catch(err => Promise.reject(err))
       .then(() => {
         console.log('OK')

@@ -33,11 +33,13 @@
     <h2>最新の投稿動画</h2>
     <v-row no-gutters>
       <v-col
-        v-for="rss in player.rss"
-        :key="rss.video_id"
+        v-for="video in player.video"
+        :key="video.video_id"
+        xs="12"
+        md="12"
       >
-        <Rss
-          :rss="rss"
+        <Video
+          :video="video"
         />
         <br>
       </v-col>
@@ -48,11 +50,11 @@
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 import { mapState, mapGetters, mapActions } from 'vuex'
-import Rss from '../components/Rss.vue'
+import Video from '../components/Video.vue'
 
 @Component({
   components: {
-    Rss
+    Video
   }
 })
 export default class PlayerDetail extends Vue {

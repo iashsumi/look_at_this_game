@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types'
-import { Players, Rss } from '../api'
+import { Players, Videos } from '../api'
 
 export default {
   fetchPlayers: ({ commit, state }: { commit: any, state: any }) => {
@@ -22,11 +22,11 @@ export default {
   //     })
   //     .catch(err => { throw err })
   // },
-  fetchRss: ({ commit, state }: { commit: any, state: any }) => {
+  fetchVideos: ({ commit, state }: { commit: any, state: any }) => {
     console.log('OK2')
-    return Rss.fetch()
-      .then((rss) => {
-        commit(types.FETCH_RSS, rss)
+    return Videos.fetch()
+      .then((videos) => {
+        commit(types.FETCH_VIDEOS, videos)
       })
       .catch(err => { throw err })
   }

@@ -1,9 +1,7 @@
-import Games from './games'
-import Rss from './rss'
+import Videos from './videos'
 import Players from './players'
 
 export {
   Players,
-  Games,
-  Rss
+  Videos
 }

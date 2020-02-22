@@ -13,7 +13,7 @@ const state = {
   },
   players: [],
   game: null,
-  rss: []
+  videos: []
 }
 
 export default new Vuex.Store({
