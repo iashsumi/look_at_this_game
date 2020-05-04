@@ -1,5 +1,3 @@
 export const DRAWER_UPDATE = 'DRAWER_UPDATE'
-export const FETCH_GAMES = 'FETCH_GAMES'
-export const FETCH_GAME = 'FETCH_GAME'
 export const FETCH_VIDEOS = 'FETCH_VIDEOS'
 export const FETCH_PLAYERS = 'FETCH_PLAYERS'

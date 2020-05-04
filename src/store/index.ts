@@ -8,11 +8,7 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-  list: {
-    games: []
-  },
   players: [],
-  game: null,
   videos: []
 }
 

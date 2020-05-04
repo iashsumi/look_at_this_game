@@ -50,7 +50,7 @@ export default class Player extends Vue {
   }
 
   goDetail (): void {
-    this.$router.push({ name: 'PlayerDetail', params: { id: this.player.id } })
+    // this.$router.push({ name: 'PlayerDetail', params: { id: this.player.id } })
   }
 }
 </script>

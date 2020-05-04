@@ -14,28 +14,13 @@
       >
       <v-list dense>
         <v-list-item>
-          <router-link to="/">Intro</router-link> |
-          <v-list-item-content>
-            <v-list-item-title>Intro</v-list-item-title>
-          </v-list-item-content>
+          <router-link to="/">Intro</router-link>
         </v-list-item>
         <v-list-item>
-          <router-link to="/gamelist">gamelist</router-link> |
-          <v-list-item-content>
-            <v-list-item-title>gamelist</v-list-item-title>
-          </v-list-item-content>
+          <router-link to="/players">実況者</router-link>
         </v-list-item>
         <v-list-item>
-          <router-link to="/videos">最新情報</router-link> |
-          <v-list-item-content>
-            <v-list-item-title>Videos</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <router-link to="/players">実況者</router-link> |
-          <v-list-item-content>
-            <v-list-item-title>Players</v-list-item-title>
-          </v-list-item-content>
+          <router-link to="/videos">最新情報</router-link>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>

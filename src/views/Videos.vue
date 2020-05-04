@@ -1,10 +1,9 @@
 <template>
   <div id="Videos">
-    <br>
     <v-row no-gutters>
       <v-col
-        v-for="video in this.videos"
-        :key="video.id"
+        v-for="video in this.videos.items"
+        :key="video.sort_key"
         cols="12"
         sm="12"
       >
@@ -37,6 +36,9 @@ export default class Videos extends Vue {
 
   /** computed */
   private get videos (): any {
+    console.log(this.$store.getters.getVideos)
+    console.log(this.$store.getters.getVideos.paging_key)
+    console.log(this.$store.getters.getVideos.items)
     return this.$store.getters.getVideos
   }
 
