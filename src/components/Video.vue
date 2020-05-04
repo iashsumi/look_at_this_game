@@ -50,7 +50,7 @@
           </v-card-text>
           <v-card-title class="headline">再生回数の推移</v-card-title>
           <v-card-text>
-            TODO
+            <line-chart :chart-data="datacollection"></line-chart>
           </v-card-text>
         </v-card>
       </v-dialog>
@@ -60,21 +60,23 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+import LineChart from '../chart/LineChart'
 
-@Component
+@Component({
+  components: {
+    LineChart
+  }
+})
 export default class Video extends Vue {
   sites = { youtube: 'red', niconico: 'default' }
   dialog = false;
+  datacollection = {}
 
   @Prop()
   public video?: any;
 
   goPlayPage (): void {
     window.open(this.video.link, '_blank')
-  }
-
-  goDetail (): void {
-    this.$router.push({ name: 'VideoDetail', params: { id: this.video.video_id } })
   }
 
   siteColor (site: number): string {
@@ -92,6 +94,20 @@ export default class Video extends Vue {
         return 'Youtube'
       default:
         return 'NicoNico'
+    }
+  }
+
+  private mounted () {
+    this.datacollection = {
+      labels: Object.keys(this.video.views_each_day),
+      datasets: [
+        {
+          backgroundColor: 'rgba(60, 160, 220, 0.3)',
+          borderColor: 'rgba(60, 160, 220, 0.8)',
+          data: Object.values(this.video.views_each_day),
+          fill: false
+        }
+      ]
     }
   }
 }

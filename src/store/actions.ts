@@ -5,17 +5,15 @@ export default {
   fetchPlayers: ({ commit, state }: { commit: any, state: any }) => {
     return Players.fetch()
       .then((Players) => {
-        console.log(types.FETCH_PLAYERS)
-        console.log(Players)
-
         commit(types.FETCH_PLAYERS, Players)
       })
       .catch(err => { throw err })
   },
-  fetchVideos: ({ commit, state }: { commit: any, state: any }) => {
-    return Videos.fetch()
-      .then((videos) => {
-        commit(types.FETCH_VIDEOS, videos)
+  fetchVideos: ({ commit, state }: { commit: any, state: any }, key: string) => {
+    return Videos.fetch(key)
+      .then((videos: any) => {
+        commit(types.PAGING_KEY, videos.paging_key)
+        commit(types.FETCH_VIDEOS, state.videos.concat(videos.items))
       })
       .catch(err => { throw err })
   }

@@ -9,7 +9,8 @@ Vue.use(Vuex)
 
 const state = {
   players: [],
-  videos: []
+  videos: [],
+  paging_key: null
 }
 
 export default new Vuex.Store({

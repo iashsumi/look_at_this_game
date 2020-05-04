@@ -2,7 +2,7 @@
   <div id="Videos">
     <v-row no-gutters>
       <v-col
-        v-for="video in this.videos.items"
+        v-for="video in this.videos"
         :key="video.sort_key"
         cols="12"
         sm="12"
@@ -29,26 +29,20 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 export default class Videos extends Vue {
   disp: boolean = false
 
-  /** methods */
-  // private changeDisp (): void {
-  //   this.disp = !this.disp
+  // TODO
+  // nextPage (): void {
+  //   const key = this.$store.getters.getPagingKey
+  //   this.$store.dispatch('fetchVideos', key)
   // }
 
   /** computed */
   private get videos (): any {
-    console.log(this.$store.getters.getVideos)
-    console.log(this.$store.getters.getVideos.paging_key)
-    console.log(this.$store.getters.getVideos.items)
     return this.$store.getters.getVideos
   }
 
   /** ライフサイクルフック */
   private created () {
     this.$store.dispatch('fetchVideos')
-      .catch(err => Promise.reject(err))
-      .then(() => {
-        console.log('OK')
-      })
   }
 }
 </script>
