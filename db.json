@@ -1,6 +1,5 @@
 {
-  "videos": 
-  {
+  "videos": {
     "count": 50,
     "scanned_count": 50,
     "paging_key": {
@@ -132,176 +131,42 @@
         "published_at": "2020/05/04 08:00:07"
       }
     ]
+  },
+  "players": 
+  {
+    "count": 5,
+    "scanned_count": 5,
+    "items": [
+      {
+        "user_id": "36661466",
+        "name": "蘭たん",
+        "thumbnail_url": "https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/3666/36661466.jpg?1557128157",
+        "site_id": 1
+      },
+      {
+        "user_id": "49092306",
+        "name": "テラゾー",
+        "thumbnail_url": "https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/4909/49092306.jpg?1441487874",
+        "site_id": 1
+      },
+      {
+        "user_id": "UC-PYFlNwRzLcGfMzT4pSl5Q",
+        "name": "コジマ店員のホラーは恐くない",
+        "thumbnail_url": "https://yt3.ggpht.com/a/AGF-l7_-DyNUZa3_ckNou695mTOW_sVonVAHfIDzlg=s288-c-k-c0xffffffff-no-rj-mo",
+        "site_id": 0
+      },
+      {
+        "user_id": "UCZMRuagdTBKmmrFtSMN48Xw",
+        "name": "牛沢",
+        "thumbnail_url": "https://yt3.ggpht.com/a/AGF-l78-uyq99dmQiRnsJ9usnXEvbfTleE2TelzBug=s288-c-k-c0xffffffff-no-rj-mo",
+        "site_id": 0
+      },
+      {
+        "user_id": "UCx1nAvtVDIsaGmCMSe8ofsQ",
+        "name": "jun channel",
+        "thumbnail_url": "https://yt3.ggpht.com/a/AGF-l78c1NZxkQXjp5PMBIOgh-j9RCfNCfYB5VI-ZQ=s288-c-k-c0xffffffff-no-rj-mo",
+        "site_id": 0
+      }
+    ]
   }
-  ,
-  "players": [
-    {
-      "id": 1,
-      "name": "牛沢",
-      "site": 0,
-      "channel_url": "https://www.youtube.com/user/ushizawa16",
-      "thumbnail": "https://yt3.ggpht.com/a/AGF-l78-uyq99dmQiRnsJ9usnXEvbfTleE2TelzBug=s288-c-k-c0xffffffff-no-rj-mo",
-      "published": "2013/09/19",
-      "videos": [
-        {
-          "video_id": "yDDk_qiVl7s",
-          "title": "堂島の龍、壊れる【龍が如く極２】＃３７",
-          "link": "https://www.youtube.com/watch?v=yDDk_qiVl7s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "なぜか小雪ちゃんの前では欲望を隠さない男\nチャンネル登録されると嬉しい→http://goo.gl/3ZTvNW\n【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        },
-        {
-          "video_id": "rE3B7asBlT0",
-          "title": "こっちの映画の方が面白そう【龍が如く極２】＃３６",
-          "link": "https://www.youtube.com/watch?v=rE3B7asBlT0&t=1105s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "桐生一馬さん、また極道映画を観て泣く　チャンネル登録されると嬉しい→http://goo.gl/3ZTvNW【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        },
-        {
-          "video_id": "rE3B7asBlT3",
-          "title": "こっちの映画の方が面白そう【龍が如く極２】＃３６",
-          "link": "https://www.youtube.com/watch?v=rE3B7asBlT0&t=1105s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "桐生一馬さん、また極道映画を観て泣く　チャンネル登録されると嬉しい→http://goo.gl/3ZTvNW【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        },
-        {
-          "video_id": "rE3B7asBlT4",
-          "title": "こっちの映画の方が面白そう【龍が如く極２】＃３６",
-          "link": "https://www.youtube.com/watch?v=rE3B7asBlT0&t=1105s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "桐生一馬さん、また極道映画を観て泣く　チャンネル登録されると嬉しい→http://goo.gl/3ZTvNW【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        },
-        {
-          "video_id": "rE3B7asBlT5",
-          "title": "こっちの映画の方が面白そう【龍が如く極２】＃３６",
-          "link": "https://www.youtube.com/watch?v=rE3B7asBlT0&t=1105s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "桐生一馬さん、また極道映画を観て泣く　チャンネル登録されると嬉しい→http://goo.gl/3ZTvNW【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        },
-        {
-          "video_id": "rE3B7asBlT6",
-          "title": "こっちの映画の方が面白そう【龍が如く極２】＃３６",
-          "link": "https://www.youtube.com/watch?v=rE3B7asBlT0&t=1105s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "桐生一馬さん、また極道映画を観て泣く　チャンネル登録されると嬉しい→http://goo.gl/3ZTvNW【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        },
-        {
-          "video_id": "rE3B7asBlT7",
-          "title": "こっちの映画の方が面白そう【龍が如く極２】＃３６",
-          "link": "https://www.youtube.com/watch?v=rE3B7asBlT0&t=1105s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "桐生一馬さん、また極道映画を観て泣く　チャンネル登録されると嬉しい→http://goo.gl/3ZTvNW【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "jun channel",
-      "site": 1,
-      "channel_url": "https://www.youtube.com/channel/UCx1nAvtVDIsaGmCMSe8ofsQ",
-      "thumbnail": "https://yt3.ggpht.com/a/AGF-l78c1NZxkQXjp5PMBIOgh-j9RCfNCfYB5VI-ZQ=s288-c-k-c0xffffffff-no-rj-mo",
-      "published": "2016/03/31",
-      "videos": [
-        {
-          "video_id": "AWvoIdC9n4w",
-          "title": "真・ポケモンセンター本当に終了のお知らせ　verプラチナその２",
-          "link": "https://www.youtube.com/watch?v=AWvoIdC9n4w",
-          "published": "2020/02/16",
-          "thumbnail": "https://img.youtube.com/vi/AWvoIdC9n4w/mqdefault.jpg",
-          "description": "※放送のルール\nポケモンセンター利用禁止　ショップ利用禁止\nサファリパーク利用禁止\n　　パソコン利用禁止育て屋さん利用禁止\n　　　　技忘れて覚えなおすの禁止野生ポケモン倒すの禁止\n　　無限禁止（無限にアイテム手に入る場所や技）その他、客観的に見てずるい技禁止\n　文明の利器禁止（攻略サイトの閲覧等）特性：もの拾い禁止\n　伝説のポケモンは伝説ポケモンを大切にする\n　秘伝マシンの複数回使用禁止\n色違いが出たら必ず捕まえる\n▼うんこちゃん/加藤純一Twitter \nhttps://twitter.com/unkochan1234567\n#加藤純一#ポケモン#ポケットモンスタープラチナ",
-          "views": "10000"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "牛沢",
-      "site": 0,
-      "channel_url": "https://www.youtube.com/user/ushizawa16",
-      "thumbnail": "https://yt3.ggpht.com/a/AGF-l78-uyq99dmQiRnsJ9usnXEvbfTleE2TelzBug=s288-c-k-c0xffffffff-no-rj-mo",
-      "published": "2013/09/19",
-      "videos": [
-        {
-          "video_id": "yDDk_qiVl7s",
-          "title": "堂島の龍、壊れる【龍が如く極２】＃３７",
-          "link": "https://www.youtube.com/watch?v=yDDk_qiVl7s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "なぜか小雪ちゃんの前では欲望を隠さない男\nチャンネル登録されると嬉しい→http://goo.gl/3ZTvNW\n【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "jun channel",
-      "site": 1,
-      "channel_url": "https://www.youtube.com/channel/UCx1nAvtVDIsaGmCMSe8ofsQ",
-      "thumbnail": "https://yt3.ggpht.com/a/AGF-l78c1NZxkQXjp5PMBIOgh-j9RCfNCfYB5VI-ZQ=s288-c-k-c0xffffffff-no-rj-mo",
-      "published": "2016/03/31",
-      "videos": [
-        {
-          "video_id": "AWvoIdC9n4w",
-          "title": "真・ポケモンセンター本当に終了のお知らせ　verプラチナその２",
-          "link": "https://www.youtube.com/watch?v=AWvoIdC9n4w",
-          "published": "2020/02/16",
-          "thumbnail": "https://img.youtube.com/vi/AWvoIdC9n4w/mqdefault.jpg",
-          "description": "※放送のルール\nポケモンセンター利用禁止　ショップ利用禁止\nサファリパーク利用禁止\n　　パソコン利用禁止育て屋さん利用禁止\n　　　　技忘れて覚えなおすの禁止野生ポケモン倒すの禁止\n　　無限禁止（無限にアイテム手に入る場所や技）その他、客観的に見てずるい技禁止\n　文明の利器禁止（攻略サイトの閲覧等）特性：もの拾い禁止\n　伝説のポケモンは伝説ポケモンを大切にする\n　秘伝マシンの複数回使用禁止\n色違いが出たら必ず捕まえる\n▼うんこちゃん/加藤純一Twitter \nhttps://twitter.com/unkochan1234567\n#加藤純一#ポケモン#ポケットモンスタープラチナ",
-          "views": "10000"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "牛沢",
-      "site": 0,
-      "channel_url": "https://www.youtube.com/user/ushizawa16",
-      "thumbnail": "https://yt3.ggpht.com/a/AGF-l78-uyq99dmQiRnsJ9usnXEvbfTleE2TelzBug=s288-c-k-c0xffffffff-no-rj-mo",
-      "published": "2013/09/19",
-      "videos": [
-        {
-          "video_id": "yDDk_qiVl7s",
-          "title": "堂島の龍、壊れる【龍が如く極２】＃３７",
-          "link": "https://www.youtube.com/watch?v=yDDk_qiVl7s",
-          "published": "2020/02/15",
-          "thumbnail": "https://img.youtube.com/vi/yDDk_qiVl7s/mqdefault.jpg",
-          "description": "なぜか小雪ちゃんの前では欲望を隠さない男\nチャンネル登録されると嬉しい→http://goo.gl/3ZTvNW\n【twitter】http://twitter.com/ushizawa",
-          "views": "124,130"
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "jun channel",
-      "site": 1,
-      "channel_url": "https://www.youtube.com/channel/UCx1nAvtVDIsaGmCMSe8ofsQ",
-      "thumbnail": "https://yt3.ggpht.com/a/AGF-l78c1NZxkQXjp5PMBIOgh-j9RCfNCfYB5VI-ZQ=s288-c-k-c0xffffffff-no-rj-mo",
-      "published": "2016/03/31",
-      "videos": [
-        {
-          "video_id": "AWvoIdC9n4w",
-          "title": "真・ポケモンセンター本当に終了のお知らせ　verプラチナその２",
-          "link": "https://www.youtube.com/watch?v=AWvoIdC9n4w",
-          "published": "2020/02/16",
-          "thumbnail": "https://img.youtube.com/vi/AWvoIdC9n4w/mqdefault.jpg",
-          "description": "※放送のルール\nポケモンセンター利用禁止　ショップ利用禁止\nサファリパーク利用禁止\n　　パソコン利用禁止育て屋さん利用禁止\n　　　　技忘れて覚えなおすの禁止野生ポケモン倒すの禁止\n　　無限禁止（無限にアイテム手に入る場所や技）その他、客観的に見てずるい技禁止\n　文明の利器禁止（攻略サイトの閲覧等）特性：もの拾い禁止\n　伝説のポケモンは伝説ポケモンを大切にする\n　秘伝マシンの複数回使用禁止\n色違いが出たら必ず捕まえる\n▼うんこちゃん/加藤純一Twitter \nhttps://twitter.com/unkochan1234567\n#加藤純一#ポケモン#ポケットモンスタープラチナ",
-          "views": "10000"
-        }
-      ]
-    }
-  ]
 }

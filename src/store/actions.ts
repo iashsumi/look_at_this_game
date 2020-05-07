@@ -4,8 +4,8 @@ import { Players, Videos } from '../api'
 export default {
   fetchPlayers: ({ commit, state }: { commit: any, state: any }) => {
     return Players.fetch()
-      .then((Players) => {
-        commit(types.FETCH_PLAYERS, Players)
+      .then((players: any) => {
+        commit(types.FETCH_PLAYERS, players.items)
       })
       .catch(err => { throw err })
   },

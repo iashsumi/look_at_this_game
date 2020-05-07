@@ -3,9 +3,9 @@
     <v-row no-gutters>
       <v-col
         v-for="player in this.players"
-        :key="player.id"
+        :key="player.user_id"
+        cols="12"
         sm="12"
-        md="2"
       >
         <Player
           :player="player"
@@ -34,10 +34,6 @@ export default class Players extends Vue {
   /** ライフサイクルフック */
   private created () {
     this.$store.dispatch('fetchPlayers')
-      .catch(err => Promise.reject(err))
-      .then(() => {
-        console.log('OK')
-      })
   }
 }
 </script>
