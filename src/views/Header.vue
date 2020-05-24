@@ -6,16 +6,16 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>LATG ~Look At This Game~</v-toolbar-title>
     </v-app-bar>
     <v-navigation-drawer
         v-model="drawer"
         app
       >
       <v-list dense>
-        <v-list-item>
+        <!-- <v-list-item>
           <router-link to="/">Intro</router-link>
-        </v-list-item>
+        </v-list-item> -->
         <v-list-item>
           <router-link to="/players">実況者</router-link>
         </v-list-item>
