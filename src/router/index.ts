@@ -18,7 +18,7 @@ const routes = [
     component: Videos
   },
   {
-    path: '/players',
+    path: '/playerlist',
     name: 'PLayers',
     component: Players
   }

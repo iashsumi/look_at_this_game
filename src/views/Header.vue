@@ -17,10 +17,10 @@
           <router-link to="/">Intro</router-link>
         </v-list-item> -->
         <v-list-item>
-          <router-link to="/players">実況者</router-link>
+          <router-link to="/playerlist">実況者</router-link>
         </v-list-item>
         <v-list-item>
-          <router-link to="/videos">最新情報</router-link>
+          <router-link to="/">最新情報</router-link>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>

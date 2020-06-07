@@ -3,9 +3,18 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 12.7.0
+      nodejs: 12
     commands:
       - npm install
-  pre_build:
+  build:
     commands:
-      - npm test
+      # 静的サイトのビルド
+      - npm run build
+      # S3の古いオブジェクト削除
+      - aws s3 rm s3://look-at-this-game --recursive
+      # cloudfrontのキャッシュ削除
+      - aws cloudfront create-invalidation --distribution-id E1L0TPKTX0OKC6 --paths '/*'
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'dist'
