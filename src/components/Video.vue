@@ -24,7 +24,7 @@
             <v-list-item-subtitle>実況者: {{ video.channel_name }}</v-list-item-subtitle>
             <v-list-item-subtitle>更新日: {{ video.updated_at }}</v-list-item-subtitle>
             <v-list-item-subtitle>
-              <v-chip class="ma-2" :class="siteColor(video.site_id)">{{ siteName(video.site_id) }}</v-chip>
+              <v-chip class="ma-2" :class="this.kindColor(video.site_id)">{{ this.siteName(video.site_id) }}</v-chip>
               <v-chip
                 class="ma-2"
                 color="indigo"
@@ -59,16 +59,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+import { Component, Emit, Prop, Vue, Mixins } from 'vue-property-decorator'
 import LineChart from '../chart/LineChart'
+import Site from '../common/site'
 
 @Component({
   components: {
     LineChart
   }
 })
-export default class Video extends Vue {
-  sites = { youtube: 'red', niconico: 'default' }
+export default class Video extends Mixins(Site) {
   dialog = false;
   datacollection = {}
 
@@ -79,32 +79,16 @@ export default class Video extends Vue {
     window.open(this.video.link, '_blank')
   }
 
-  siteColor (site: number): string {
-    switch (site) {
-      case 0:
-        return this.sites.youtube
-      default:
-        return this.sites.niconico
-    }
-  }
-
-  siteName (site: number): string {
-    switch (site) {
-      case 0:
-        return 'Youtube'
-      default:
-        return 'NicoNico'
-    }
-  }
-
   private mounted () {
+    let sortedKeys = Object.keys(this.video.views).sort()
     this.datacollection = {
-      labels: Object.keys(this.video.views_each_day),
+      labels: sortedKeys,
       datasets: [
         {
+          label: '再生回数',
           backgroundColor: 'rgba(60, 160, 220, 0.3)',
           borderColor: 'rgba(60, 160, 220, 0.8)',
-          data: Object.values(this.video.views_each_day),
+          data: sortedKeys.map(key => this.video.views[key]),
           fill: false
         }
       ]
