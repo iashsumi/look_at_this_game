@@ -19,10 +19,10 @@
         <v-list-item three-line>
           <v-list-item-content>
             <v-list-item-title class="headline">{{ video.title }}</v-list-item-title>
-            <v-list-item-subtitle>公開日：{{ video.published_at }}</v-list-item-subtitle>
-            <v-list-item-subtitle>再生数: {{ video.latest_view }}</v-list-item-subtitle>
+            <v-list-item-subtitle>公開日: {{ video.published_at }}</v-list-item-subtitle>
+            <v-list-item-subtitle>再生数: {{ latestView() }}</v-list-item-subtitle>
             <v-list-item-subtitle>実況者: {{ video.channel_name }}</v-list-item-subtitle>
-            <v-list-item-subtitle>更新日: {{ video.updated_at }}</v-list-item-subtitle>
+            <v-list-item-subtitle>最終データ更新日: {{ video.updated_at }}</v-list-item-subtitle>
             <v-list-item-subtitle>
               <v-chip class="ma-2" :class="this.kindColor(video.site_id)">{{ this.siteName(video.site_id) }}</v-chip>
               <v-chip
@@ -50,7 +50,7 @@
           </v-card-text>
           <v-card-title class="headline">再生回数の推移</v-card-title>
           <v-card-text>
-            <line-chart :chart-data="datacollection"></line-chart>
+            <line-chart :chart-data="buildDataCollection()"></line-chart>
           </v-card-text>
         </v-card>
       </v-dialog>
@@ -70,7 +70,6 @@ import Site from '../common/site'
 })
 export default class Video extends Mixins(Site) {
   dialog = false;
-  datacollection = {}
 
   @Prop()
   public video?: any;
@@ -79,16 +78,22 @@ export default class Video extends Mixins(Site) {
     window.open(this.video.link, '_blank')
   }
 
-  private mounted () {
+  latestView (): String {
+    const sortedKeys = Object.keys(this.video.views).sort()
+    const latestSortKey = sortedKeys[sortedKeys.length - 1]
+    return parseInt(this.video.views[latestSortKey]).toLocaleString()
+  }
+
+  buildDataCollection (): Object {
     let sortedKeys = Object.keys(this.video.views).sort()
-    this.datacollection = {
+    return {
       labels: sortedKeys,
       datasets: [
         {
           label: '再生回数',
           backgroundColor: 'rgba(60, 160, 220, 0.3)',
           borderColor: 'rgba(60, 160, 220, 0.8)',
-          data: sortedKeys.map(key => this.video.views[key]),
+          data: sortedKeys.map(key => parseInt(this.video.views[key])),
           fill: false
         }
       ]
