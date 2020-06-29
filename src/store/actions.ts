@@ -9,7 +9,7 @@ export default {
       })
       .catch(err => { throw err })
   },
-  fetchVideos: ({ commit, state }: { commit: any, state: any }, key: string) => {
+  fetchVideos: ({ commit, state }: { commit: any, state: any }, key: any) => {
     return Videos.fetch(key)
       .then((videos: any) => {
         commit(types.PAGING_KEY, videos.paging_key)

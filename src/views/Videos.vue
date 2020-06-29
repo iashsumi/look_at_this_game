@@ -12,6 +12,9 @@
         />
         <br>
       </v-col>
+      <v-col cols="12" sm="12">
+        <v-btn v-if="disp" color="primary" @click="nextPage">さらに読み込む</v-btn>
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -29,11 +32,10 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 export default class Videos extends Vue {
   disp: boolean = false
 
-  // TODO
-  // nextPage (): void {
-  //   const key = this.$store.getters.getPagingKey
-  //   this.$store.dispatch('fetchVideos', key)
-  // }
+  nextPage (): void {
+    const key = this.$store.getters.getPagingKey
+    this.$store.dispatch('fetchVideos', key)
+  }
 
   /** computed */
   private get videos (): any {
@@ -42,7 +44,18 @@ export default class Videos extends Vue {
 
   /** ライフサイクルフック */
   private created () {
-    this.$store.dispatch('fetchVideos')
+    this.$store.dispatch('fetchVideos').then(() => {
+      this.disp = true
+    })
   }
 }
 </script>
+<style scoped>
+.v-btn {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+</style>
