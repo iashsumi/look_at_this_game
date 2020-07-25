@@ -3,8 +3,8 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class site extends Vue {
-  siteNames = { youtube: 'YouTube', niconico: 'NicoNico' }
-  kindColors = { youtube: 'red', niconico: 'default' }
+  siteNames = { youtube: 'YouTube', niconico: 'ニコニコ動画' }
+  kindColors = { youtube: 'red', niconico: 'black' }
 
   kindColor (site: number): string {
     switch (site) {

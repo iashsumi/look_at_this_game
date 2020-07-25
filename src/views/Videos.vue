@@ -10,10 +10,9 @@
         <Video
           :video="video"
         />
-        <br>
       </v-col>
       <v-col cols="12" sm="12">
-        <v-btn v-if="disp" color="primary" @click="nextPage">さらに読み込む</v-btn>
+        <v-btn v-if="disp" @click="nextPage">さらに読み込む</v-btn>
       </v-col>
     </v-row>
   </div>
@@ -52,6 +51,7 @@ export default class Videos extends Vue {
 </script>
 <style scoped>
 .v-btn {
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
