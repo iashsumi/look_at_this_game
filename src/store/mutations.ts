@@ -9,5 +9,14 @@ export default {
   },
   [types.FETCH_PLAYERS] (state: any, payload: any) {
     state.players = payload
+  },
+  [types.FETCH_TOP] (state: any, payload: any) {
+    state.top = payload
+  },
+  [types.FETCH_THREAD] (state: any, payload: any) {
+    state.thread = payload
+  },
+  [types.FETCH_THREADS] (state: any, payload: any) {
+    state.threads = payload
   }
 }

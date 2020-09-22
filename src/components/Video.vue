@@ -24,8 +24,8 @@
           <v-list-item-content>
             <v-list-item-title class="headline">{{ video.title }}</v-list-item-title>
             <v-list-item-subtitle>公開日: {{ video.published_at }}</v-list-item-subtitle>
-            <v-list-item-subtitle>再生数: {{ latestView() }}  (更新日:{{ video.updated_at }})</v-list-item-subtitle>
-            <v-list-item-subtitle>実況者: {{ video.channel_name }} <span :class="this.kindColor(video.site_id)">{{ this.siteName(video.site_id) }}</span></v-list-item-subtitle>
+            <v-list-item-subtitle>再生数: {{ video.view_count }}  (更新日:{{ video.updated_at }})</v-list-item-subtitle>
+            <v-list-item-subtitle>実況者: {{ video.commentator_name }} <span :class="this.kindColor(video.site_kbn)">{{ this.siteName(video.site_kbn) }}</span></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-col>
@@ -34,15 +34,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue, Mixins } from 'vue-property-decorator'
-import LineChart from '../chart/LineChart'
+import { Component, Prop, Vue, Mixins } from 'vue-property-decorator'
 import Site from '../common/site'
 
-@Component({
-  components: {
-    LineChart
-  }
-})
+@Component
 export default class Video extends Mixins(Site) {
   dialog = false;
 
@@ -51,12 +46,6 @@ export default class Video extends Mixins(Site) {
 
   goPlayPage (): void {
     window.open(this.video.link, '_blank')
-  }
-
-  latestView (): String {
-    const sortedKeys = Object.keys(this.video.views).sort()
-    const latestSortKey = sortedKeys[sortedKeys.length - 1]
-    return parseInt(this.video.views[latestSortKey]).toLocaleString()
   }
 }
 </script>

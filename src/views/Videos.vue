@@ -3,7 +3,7 @@
     <v-row no-gutters>
       <v-col
         v-for="video in this.videos"
-        :key="video.sort_key"
+        :key="video.id"
         cols="12"
         sm="12"
       >
@@ -32,8 +32,8 @@ export default class Videos extends Vue {
   disp: boolean = false
 
   nextPage (): void {
-    const key = this.$store.getters.getPagingKey
-    this.$store.dispatch('fetchVideos', key)
+    const key = this.$store.getters.getPagingKey.current_page
+    this.$store.dispatch('fetchVideos', key + 1)
   }
 
   /** computed */

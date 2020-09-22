@@ -19,8 +19,8 @@
           <v-list-item-content>
               <v-list-item-title class="headline">{{ player.name }}</v-list-item-title>
               <v-list-item-subtitle>
-                <v-chip class="ma-2" text-color="white" :class="this.kindColor(player.site_id)">
-                  {{ this.siteName(player.site_id) }}
+                <v-chip class="ma-2" text-color="white" :class="this.kindColor(player.site_kbn)">
+                  {{ this.siteName(player.site_kbn) }}
                 </v-chip>
               </v-list-item-subtitle>
           </v-list-item-content>
@@ -40,12 +40,12 @@ export default class Player extends Mixins(Site) {
   public player?: any;
 
   goUserPage (): void {
-    window.open(this.siteUserPage(this.player.site_id, this.player.user_id), '_blank')
+    window.open(this.siteUserPage(this.player.site_kbn, this.player.user_id), '_blank')
   }
 
-  siteUserPage (site: number, userId: string): string {
+  siteUserPage (site: string, userId: string): string {
     switch (site) {
-      case 0:
+      case 'youtube':
         return 'https://www.youtube.com/channel/' + userId
       default:
         return 'https://www.nicovideo.jp/user/' + userId

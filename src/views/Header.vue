@@ -6,23 +6,31 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>LATG ~Look At This Game~</v-toolbar-title>
+      <v-toolbar-title>
+        <h2>Look@Game</h2>
+        <!-- <v-img src="../../public/img/icons/logo_small.png"></v-img> -->
+      </v-toolbar-title>
     </v-app-bar>
     <v-navigation-drawer
         v-model="drawer"
         app
       >
-      <v-list dense>
-        <!-- <v-list-item>
-          <router-link to="/">Intro</router-link>
-        </v-list-item> -->
-        <v-list-item>
-          <router-link to="/playerlist">実況者</router-link>
-        </v-list-item>
-        <v-list-item>
-          <router-link to="/">最新情報</router-link>
-        </v-list-item>
-      </v-list>
+      <v-treeview
+        :items="items"
+        :open="open"
+        item-key="name"
+        activatable
+        open-on-click
+      >
+        <template v-slot:prepend="{ item }">
+          <span @click="go(item.path)">
+            <v-icon>
+              {{ item.icon }}
+            </v-icon>
+            {{ item.name }}
+          </span>
+        </template>
+      </v-treeview>
     </v-navigation-drawer>
   </div>
 </template>
@@ -36,7 +44,34 @@ import { DRAWER_UPDATE } from '@/store/mutation-types'
 
 export default {
   data: () => ({
-    drawer: false
+    drawer: false,
+    open: ['public'],
+    items: [
+      {
+        id: 1,
+        name: 'Top',
+        path: '/',
+        icon: 'dashboard'
+      },
+      {
+        id: 2,
+        name: 'ゲーム実況者',
+        path: '/playerlist',
+        icon: 'mic'
+      },
+      {
+        id: 3,
+        name: 'ゲーム実況アンテナ',
+        path: '/videos',
+        icon: 'video_library'
+      },
+      {
+        id: 4,
+        name: 'ゲーム情報スレまとめ',
+        path: '/threads',
+        icon: 'view_headline'
+      }
+    ]
   }),
   // computed: {
   //   // ゲッターを、スプレッド演算子（object spread operator）を使って computed に組み込む
@@ -50,6 +85,9 @@ export default {
     // ...mapMutations({
     //   DRAWER_UPDATE
     // }),
+    go (path) {
+      this.$router.push({ path: path })
+    },
     update () {
 
       // console.log(this.drawer)
@@ -59,3 +97,8 @@ export default {
 
 }
 </script>
+<style scoped>
+span {
+  width: 100%
+}
+</style>

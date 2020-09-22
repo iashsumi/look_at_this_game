@@ -10,6 +10,9 @@ Vue.use(Vuex)
 const state = {
   players: [],
   videos: [],
+  threads: [],
+  top: null,
+  thread: null,
   paging_key: null
 }
 

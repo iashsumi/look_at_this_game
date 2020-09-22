@@ -6,18 +6,18 @@ export default class site extends Vue {
   siteNames = { youtube: 'YouTube', niconico: 'ニコニコ動画' }
   kindColors = { youtube: 'red', niconico: 'black' }
 
-  kindColor (site: number): string {
+  kindColor (site: string): string {
     switch (site) {
-      case 0:
+      case 'youtube':
         return this.kindColors.youtube
       default:
         return this.kindColors.niconico
     }
   }
 
-  siteName (site: number): string {
+  siteName (site: string): string {
     switch (site) {
-      case 0:
+      case 'youtube':
         return this.siteNames.youtube
       default:
         return this.siteNames.niconico
