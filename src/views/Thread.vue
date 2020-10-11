@@ -24,7 +24,7 @@
             </v-list-item-subtitle>
             <p v-html="item.text" class='res'></p>
             <div v-for="image in item.images" :key="image" class='resizeimage'>
-              <v-img :src="image"></v-img>
+              <img :src="image"><img>
             </div>
           </v-list-item-content>
         </v-list-item>
@@ -70,16 +70,6 @@ export default class Thread extends Vue {
 .res {
   pointer-events: none;
 }
-.resizeimage {
-  max-height: 540px;
-  max-width: 960px;
-  min-height: 192px;
-  min-width: 108px;
-}
-.resizeimage img {
-  width: 100%;
-  height: auto;
-}
 i {
   margin-right: 10px;
 }
@@ -91,5 +81,19 @@ h2 {
   color: #f4f4f4;/*文字色*/
   border-left: solid 10px rgba(207, 202, 202, 0.795);/*左線*/
   /*border-bottom: solid 3px rgba(207, 202, 202, 0.795);/*下線*/
+}
+@media screen and (min-width: 768px) {
+  .resizeimage img {
+    width: 40%;
+    max-width: 40%;
+    height: auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .resizeimage img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 }
 </style>
