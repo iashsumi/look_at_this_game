@@ -22,7 +22,10 @@
             <v-list-item-subtitle>
               No: {{item.no}} 日付: {{item.date}} ID: {{item.id}}
             </v-list-item-subtitle>
-            <p v-html="item.text"></p>
+            <p v-html="item.text" class='res'></p>
+            <div v-for="image in item.images" :key="image" class='resizeimage'>
+              <v-img :src="image"></v-img>
+            </div>
           </v-list-item-content>
         </v-list-item>
         <v-divider class="mx-4"></v-divider>
@@ -63,7 +66,19 @@ export default class Thread extends Vue {
 <style scoped>
 #Thread {
   margin: 20px;
+}
+.res {
   pointer-events: none;
+}
+.resizeimage {
+  max-height: 540px;
+  max-width: 960px;
+  min-height: 192px;
+  min-width: 108px;
+}
+.resizeimage img {
+  width: 100%;
+  height: auto;
 }
 i {
   margin-right: 10px;

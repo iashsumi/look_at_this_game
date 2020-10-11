@@ -1,10 +1,8 @@
-<?xml version=’1.0′ encoding=’UTF-8′?>
-<!– generator=”Inspyder Sitemap Creator” –>
-<urlset xmlns=”http://www.sitemaps.org/schemas/sitemap/0.9″>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <url>
-<loc>https://www.latg.site/</loc>
-<lastmod>2020-06-29</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.6</priority>
+  <loc>https://www.latg.site/</loc>
+  <priority>1.0</priority>
+  <changefreq>hourly</changefreq>
 </url>
 </urlset>
