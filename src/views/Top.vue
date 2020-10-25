@@ -71,7 +71,7 @@ export default class Top extends Mixins(Site) {
   }
 
   goPlayPage (video): void {
-    window.open(video.link, '_blank')
+    this.$router.push({ name: 'VideoPlayer', params: { id: video.id } })
   }
 }
 </script>
