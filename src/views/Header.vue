@@ -14,6 +14,7 @@
     <v-navigation-drawer
         v-model="drawer"
         app
+        temporary
       >
       <v-treeview
         :items="items"
