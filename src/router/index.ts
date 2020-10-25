@@ -14,7 +14,8 @@ const routes = [
   {
     path: '/',
     name: 'Top',
-    component: Top
+    component: Top,
+    meta: { title: 'TOPページ', desc: '最新のゲーム動画、スレのまとめをご紹介！' }
   },
   {
     path: '/introduction',
@@ -24,27 +25,32 @@ const routes = [
   {
     path: '/videos',
     name: 'Videos',
-    component: Videos
+    component: Videos,
+    meta: { title: 'ゲーム実況アンテナ', desc: '最新のゲーム動画のアンテナ' }
   },
   {
     path: '/playerlist',
     name: 'PLayers',
-    component: Players
+    component: Players,
+    meta: { title: 'ゲーム実況者', desc: 'ゲーム実況者一覧' }
   },
   {
     path: '/thread/:id',
     name: 'Thread',
-    component: Thread
+    component: Thread,
+    meta: { title: 'スレまとめ', desc: 'ゲーム関連スレのまとめ' }
   },
   {
     path: '/threads',
     name: 'Threads',
-    component: Threads
+    component: Threads,
+    meta: { title: 'ゲーム情報スレまとめ一覧', desc: 'ゲーム関連スレ一覧' }
   },
   {
     path: '/videoplayer/:id',
     name: 'VideoPlayer',
-    component: VideoPlayer
+    component: VideoPlayer,
+    meta: { title: '動画再生', desc: 'ゲーム動画を再生' }
   }
 ]
 
