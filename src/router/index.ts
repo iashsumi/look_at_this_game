@@ -6,6 +6,7 @@ import Players from '../views/Players.vue'
 import Top from '../views/Top.vue'
 import Thread from '../views/Thread.vue'
 import Threads from '../views/Threads.vue'
+import VideoPlayer from '../views/VideoPlayer.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/threads',
     name: 'Threads',
     component: Threads
+  },
+  {
+    path: '/videoplayer/:id',
+    name: 'VideoPlayer',
+    component: VideoPlayer
   }
 ]
 
