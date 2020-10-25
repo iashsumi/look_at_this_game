@@ -24,7 +24,7 @@
             </v-list-item-subtitle>
             <p v-html="item.text" class='res'></p>
             <div v-for="image in item.images" :key="image" class='resizeimage'>
-              <img :src="image"><img>
+              <img :src="convertFromHttpToHttps(image)"><img>
             </div>
           </v-list-item-content>
         </v-list-item>
@@ -47,6 +47,14 @@ export default class Thread extends Vue {
   momentum: Number = 0
   updatedAt: String = ''
   threads: any = []
+
+  convertFromHttpToHttps (imageUrl: String): String {
+    if (imageUrl.match(/https/)) {
+      return imageUrl
+    } else {
+      return imageUrl.replace('http', 'https')
+    }
+  }
 
   /** ライフサイクルフック */
   private created () {
