@@ -45,7 +45,7 @@ export default class Video extends Mixins(Site) {
   public video?: any;
 
   goPlayPage (): void {
-    window.open(this.video.link, '_blank')
+    this.$router.push({ name: 'VideoPlayer', params: { id: this.video.id } })
   }
 }
 </script>
