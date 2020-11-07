@@ -2,8 +2,6 @@
   <div id="header">
     <v-app-bar
       app
-      color="black"
-      dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
