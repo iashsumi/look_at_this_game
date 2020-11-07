@@ -82,23 +82,7 @@ export default {
       const target = this.items.find(item => item.name === val[0])
       this.$router.push({ path: target.path })
     }
-  },
-
-  methods: {
-    // ...mapMutations({
-    //   DRAWER_UPDATE
-    // }),
-    go (path) {
-      console.log(this.acrive)
-      this.$router.push({ path: path })
-    },
-    update () {
-
-      // console.log(this.drawer)
-      // this.DRAWER_UPDATE() // mutationをコールします
-    }
   }
-
 }
 </script>
 <style scoped>
