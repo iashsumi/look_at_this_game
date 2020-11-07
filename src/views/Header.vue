@@ -15,19 +15,16 @@
         temporary
       >
       <v-treeview
+        :active.sync="active"
         :items="items"
-        :open="open"
         item-key="name"
-        activatable
         open-on-click
+        activatable
       >
         <template v-slot:prepend="{ item }">
-          <span @click="go(item.path)">
-            <v-icon>
-              {{ item.icon }}
-            </v-icon>
-            {{ item.name }}
-          </span>
+         <v-icon>
+            {{ item.icon }}
+          </v-icon>
         </template>
       </v-treeview>
     </v-navigation-drawer>
@@ -44,7 +41,7 @@ import { DRAWER_UPDATE } from '@/store/mutation-types'
 export default {
   data: () => ({
     drawer: false,
-    open: ['public'],
+    active: [],
     items: [
       {
         id: 1,
@@ -79,12 +76,20 @@ export default {
   //     // ...
   //   ])
   // },
+  watch: {
+    active: function (val) {
+      // activeは配列だが選択できるのは1つだけなので0で参照
+      const target = this.items.find(item => item.name === val[0])
+      this.$router.push({ path: target.path })
+    }
+  },
 
   methods: {
     // ...mapMutations({
     //   DRAWER_UPDATE
     // }),
     go (path) {
+      console.log(this.acrive)
       this.$router.push({ path: path })
     },
     update () {
