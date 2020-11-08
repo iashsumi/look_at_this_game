@@ -37,3 +37,11 @@ export default class Players extends Vue {
   }
 }
 </script>
+<style scoped>
+@media screen and (min-width: 768px) {
+  #Players{
+    margin: auto;
+    max-width: 60%;
+  }
+}
+</style>

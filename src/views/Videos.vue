@@ -58,4 +58,11 @@ export default class Videos extends Vue {
   text-align: center;
   width: 100%;
 }
+
+@media screen and (min-width: 768px) {
+  #Videos{
+    margin: auto;
+    max-width: 60%;
+  }
+}
 </style>

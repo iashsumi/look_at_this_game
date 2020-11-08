@@ -1,6 +1,7 @@
 <template>
   <div id="Thread">
-    <h2>{{threadTitle}}</h2>
+    <br>
+    <h3 align="center">{{threadTitle}} まとめ</h3>
     <br>
     <v-icon>subject</v-icon>
     <span>{{boardName}}</span>
@@ -8,8 +9,16 @@
     <span>{{resCount}}</span>
     <v-icon>trending_up</v-icon>
     <span>{{momentum}}</span>
-    <v-icon>update</v-icon>
-    <span>{{updatedAt}}</span>
+    <v-icon>access_time</v-icon>
+    <span>{{threadCreatedAt}}</span>
+    <br>
+    <br>
+    <h4 align="center">キーワード</h4>
+    <span v-for="tag in tags" :key="tag.id">
+      <v-chip class="ma-2" text-color="white">
+        {{ tag.word }}
+      </v-chip>
+    </span>
     <v-card
       class="mx-auto"
       rounded
@@ -17,7 +26,6 @@
       <v-list three-line>
       <div v-for="item in threads" :key="item.no">
         <v-list-item>
-          <v-icon v-if="item.child">reply</v-icon>
           <v-list-item-content>
             <v-list-item-subtitle>
               No: {{item.no}} 日付: {{item.date}} ID: {{item.id}}
@@ -28,6 +36,20 @@
             </div>
           </v-list-item-content>
         </v-list-item>
+        <div v-for="child in item.children" :key="child.no">
+          <v-list-item>
+            <v-icon>reply</v-icon>
+            <v-list-item-content>
+              <v-list-item-subtitle>
+                No: {{child.no}} 日付: {{child.date}} ID: {{child.id}}
+              </v-list-item-subtitle>
+              <p v-html="child.text" class='res'></p>
+              <div v-for="image in child.images" :key="image" class='resizeimage'>
+                <img :src="convertFromHttpToHttps(image)"><img>
+              </div>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
         <v-divider class="mx-4"></v-divider>
       </div>
       </v-list>
@@ -45,8 +67,10 @@ export default class Thread extends Vue {
   boardName: String = ''
   resCount: Number = 0
   momentum: Number = 0
+  threadCreatedAt: String = ''
   updatedAt: String = ''
   threads: any = []
+  tags: any = []
 
   convertFromHttpToHttps (imageUrl: String): String {
     if (imageUrl.match(/https/)) {
@@ -66,6 +90,8 @@ export default class Thread extends Vue {
       this.momentum = this.$store.getters.getThread.momentum
       this.updatedAt = this.$store.getters.getThread.updated_at
       this.threads = this.$store.getters.getThread.res_details
+      this.threadCreatedAt = this.$store.getters.getThread.thread_created_at
+      this.tags = this.$store.getters.getThread.key_words
     }
     )
   }
@@ -73,7 +99,7 @@ export default class Thread extends Vue {
 </script>
 <style scoped>
 #Thread {
-  margin: 20px;
+  margin-top: 20px;
 }
 .res {
   pointer-events: none;
@@ -90,6 +116,14 @@ h2 {
   border-left: solid 10px rgba(207, 202, 202, 0.795);/*左線*/
   /*border-bottom: solid 3px rgba(207, 202, 202, 0.795);/*下線*/
 }
+
+@media screen and (min-width: 768px) {
+  #Thread{
+    margin: auto;
+    max-width: 60%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .resizeimage img {
     width: 40%;

@@ -1,7 +1,6 @@
 <template>
   <div id="Top">
-    <h2>ゲーム実況</h2>
-    <br>
+    <h2 align="center">video</h2>
     <v-container fluid>
       <v-row dense>
         <v-col
@@ -25,22 +24,28 @@
         </v-col>
       </v-row>
     </v-container>
-    <br>
-    <h2>勢いのあるスレTOP30</h2>
-    <br>
-    <v-card
-      class="mx-auto"
-      rounded
-    >
-      <v-list three-line>
-        <v-list-item-group color="primary">
-        <div v-for="item in top[1].sc_threads" :key="item.id">
-          <ThreadItem :item="item">
-          </ThreadItem>
-        </div>
-        </v-list-item-group>
-      </v-list>
-    </v-card>
+    <h2 align="center">matome</h2>
+    <v-container fluid>
+      <v-row dense>
+        <v-col
+          v-for="item in top[1].sc_threads"
+          :key="item.id"
+          md="3"
+          sm="6"
+          xs="12"
+        >
+          <v-card rounded @click="goDetail(item)">
+            <v-img v-if="item.thumbnail_url" :aspect-ratio="16/9" :src="item.thumbnail_url"></v-img>
+            <v-img v-else :aspect-ratio="16/9" :src="item.board_thumbnail_url"></v-img>
+            <p>
+              {{item.title}}<br>
+              勢い: {{item.momentum}}<br>
+              レス: {{item.res}}
+            </p>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -73,6 +78,10 @@ export default class Top extends Mixins(Site) {
   goPlayPage (video): void {
     this.$router.push({ name: 'VideoPlayer', params: { id: video.id } })
   }
+
+  goDetail (item): void {
+    this.$router.push({ name: 'Thread', params: { id: item.id } })
+  }
 }
 </script>
 <style scoped>
@@ -90,11 +99,5 @@ p {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-h2 {
-  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
-  color: #f4f4f4;/*文字色*/
-  border-left: solid 10px rgba(207, 202, 202, 0.795);/*左線*/
-  /*border-bottom: solid 3px rgba(207, 202, 202, 0.795);/*下線*/
 }
 </style>

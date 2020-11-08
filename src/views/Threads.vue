@@ -48,4 +48,11 @@ h2 {
   color: #f4f4f4;/*文字色*/
   border-left: solid 10px rgba(207, 202, 202, 0.795);/*左線*/
 }
+
+@media screen and (min-width: 768px) {
+  #Threads{
+    margin: auto;
+    max-width: 60%;
+  }
+}
 </style>
