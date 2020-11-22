@@ -37,7 +37,7 @@
           <v-card rounded @click="goDetail(item)">
             <v-img v-if="item.thumbnail_url" :aspect-ratio="16/9" :src="item.thumbnail_url"></v-img>
             <v-img v-else :aspect-ratio="16/9" :src="item.board_thumbnail_url"></v-img>
-            <h3 class="title">{{formatTitle(item.title)}}</h3>
+            <h3 class="title">{{item.title}}</h3>
             <v-icon>access_time</v-icon>
             <span>{{item.created_at}}</span><br>
             <v-icon>title</v-icon>
@@ -90,13 +90,6 @@ export default class Top extends Mixins(Site) {
 
   goDetail (item): void {
     this.$router.push({ name: 'Article', params: { id: item.id } })
-  }
-
-  formatTitle (text): string {
-    // return text
-    // console.log(text)
-    // console.log(text.padEnd(35, '!'))
-    return text.length > 35 ? text : text.padEnd(18, '')
   }
 }
 </script>
