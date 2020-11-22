@@ -16,5 +16,14 @@ export default {
   },
   getThreads: (state: any) => {
     return state.threads
+  },
+  getRanking: (state: any) => {
+    return state.ranking
+  },
+  getArticle: (state: any) => {
+    return state.article
+  },
+  getArticles: (state: any) => {
+    return state.articles
   }
 }

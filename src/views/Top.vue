@@ -9,17 +9,16 @@
           md="3"
           sm="6"
           xs="12"
+          class= "base_size"
         >
           <v-card rounded @click="goPlayPage(video)">
             <v-img :aspect-ratio="16/9" :src="video.thumbnail_url"><span :class="kindColor(video.site_kbn)">{{ siteName(video.site_kbn) }}</span><br></v-img>
-            <p>
-              {{video.title}}<br>
+            <h3 class= 'title'>{{video.title}}</h3>
               <v-avatar size="26">
                 <v-img :src="video.commentator_thumbnail_url"></v-img>
               </v-avatar>
               {{video.commentator_name}}<br>
               再生回数: {{video.view_count}}
-            </p>
           </v-card>
         </v-col>
       </v-row>
@@ -28,20 +27,21 @@
     <v-container fluid>
       <v-row dense>
         <v-col
-          v-for="item in top[1].sc_threads"
+          v-for="item in articles"
           :key="item.id"
           md="3"
           sm="6"
           xs="12"
+          class="base_size"
         >
           <v-card rounded @click="goDetail(item)">
             <v-img v-if="item.thumbnail_url" :aspect-ratio="16/9" :src="item.thumbnail_url"></v-img>
             <v-img v-else :aspect-ratio="16/9" :src="item.board_thumbnail_url"></v-img>
-            <p>
-              {{item.title}}<br>
-              勢い: {{item.momentum}}<br>
-              レス: {{item.res}}
-            </p>
+            <h3 class="title">{{formatTitle(item.title)}}</h3>
+            <v-icon>access_time</v-icon>
+            <span>{{item.created_at}}</span><br>
+            <v-icon>title</v-icon>
+            <span>{{item.game.title}}</span>
           </v-card>
         </v-col>
       </v-row>
@@ -69,10 +69,19 @@ export default class Top extends Mixins(Site) {
       return [{ 'videos': [] }, { 'sc_threads': [] }]
     }
   }
+  private get articles (): any {
+    if (this.$store.getters.getArticles) {
+      console.log(this.$store.getters.getArticles)
+      return this.$store.getters.getArticles
+    } else {
+      return []
+    }
+  }
 
   /** ライフサイクルフック */
   private created () {
     this.$store.dispatch('fetchTop')
+    this.$store.dispatch('fetchArticles')
   }
 
   goPlayPage (video): void {
@@ -80,13 +89,28 @@ export default class Top extends Mixins(Site) {
   }
 
   goDetail (item): void {
-    this.$router.push({ name: 'Thread', params: { id: item.id } })
+    this.$router.push({ name: 'Article', params: { id: item.id } })
+  }
+
+  formatTitle (text): string {
+    // return text
+    // console.log(text)
+    // console.log(text.padEnd(35, '!'))
+    return text.length > 35 ? text : text.padEnd(18, '')
   }
 }
 </script>
 <style scoped>
 #Top {
   margin: 20px;
+}
+.title {
+  font-size: 0.9rem;
+  font-weight: 450;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 p {
   /* v-card-textと同等のスタイル */
@@ -99,5 +123,14 @@ p {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  min-width: 300;
+  /* word-wrap: break-word;
+  -webkit-line-clamp: 2; */
+}
+
+@media screen and (max-width: 600px) {
+  .base_size {
+    min-width: 100%;
+  }
 }
 </style>

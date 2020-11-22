@@ -18,5 +18,14 @@ export default {
   },
   [types.FETCH_THREADS] (state: any, payload: any) {
     state.threads = payload
+  },
+  [types.FETCH_RANKING] (state: any, payload: any) {
+    state.ranking = payload
+  },
+  [types.FETCH_ARTICLE] (state: any, payload: any) {
+    state.article = payload
+  },
+  [types.FETCH_ARTICLES] (state: any, payload: any) {
+    state.articles = payload
   }
 }

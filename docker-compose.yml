@@ -12,7 +12,7 @@ services:
   json-server:
       build: ./json-server
       ports:
-        - '3000:3000'
+        - '3001:3001'
       volumes: 
         - .:/data/json-server
       command: json-server --watch ./json-server/db.json --host 0.0.0.0

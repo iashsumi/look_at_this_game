@@ -7,6 +7,7 @@ import Top from '../views/Top.vue'
 import Thread from '../views/Thread.vue'
 import Threads from '../views/Threads.vue'
 import VideoPlayer from '../views/VideoPlayer.vue'
+import Article from '../views/Article.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,12 @@ const routes = [
     name: 'VideoPlayer',
     component: VideoPlayer,
     meta: { title: '動画再生', desc: 'ゲーム動画を再生' }
+  },
+  {
+    path: '/article/:id',
+    name: 'Article',
+    component: Article,
+    meta: { title: 'スレまとめ', desc: 'ゲーム関連スレのまとめ' }
   }
 ]
 

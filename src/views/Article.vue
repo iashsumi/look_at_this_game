@@ -1,36 +1,23 @@
 <template>
-  <div id="Thread">
+  <div id="Article">
     <br>
-    <h3 align="center">{{threadTitle}} まとめ</h3>
+    <h1 align="left" style="font-size: 1.6rem">{{title}} </h1>
     <br>
-    <v-icon>subject</v-icon>
-    <span>{{boardName}}</span>
-    <v-icon>comment</v-icon>
-    <span>{{resCount}}</span>
-    <v-icon>trending_up</v-icon>
-    <span>{{momentum}}</span>
     <v-icon>access_time</v-icon>
-    <span>{{threadCreatedAt}}</span>
+    <span>{{createdAt}}</span>
     <br>
-    <br>
-    <h4 align="center">キーワード</h4>
-    <span v-for="tag in tags" :key="tag.id">
-      <v-chip class="ma-2" text-color="white">
-        {{ tag.word }}
-      </v-chip>
-    </span>
     <v-card
       class="mx-auto"
       rounded
     >
       <v-list three-line>
-      <div v-for="item in threads" :key="item.no">
+      <div v-for="item in comments" :key="item.no">
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>
               No: {{item.no}} 日付: {{item.date}} ID: {{item.id}}
             </v-list-item-subtitle>
-            <p v-html="item.text" class='red--text res'></p>
+            <h2 :class = calcColor(item.children.length) v-html="item.text"></h2>
             <div v-for="image in item.images" :key="image" class='resizeimage'>
               <img :src="convertFromHttpToHttps(image)"><img>
             </div>
@@ -43,7 +30,7 @@
               <v-list-item-subtitle>
                 No: {{child.no}} 日付: {{child.date}} ID: {{child.id}}
               </v-list-item-subtitle>
-              <p v-html="child.text" class='red--text'></p>
+              <p class='res' v-html="child.text"></p>
               <div v-for="image in child.images" :key="image" class='resizeimage'>
                 <img :src="convertFromHttpToHttps(image)"><img>
               </div>
@@ -62,15 +49,22 @@ import { Component, Vue } from 'vue-property-decorator'
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 @Component
-export default class Thread extends Vue {
-  threadTitle: String = ''
-  boardName: String = ''
-  resCount: Number = 0
-  momentum: Number = 0
-  threadCreatedAt: String = ''
-  updatedAt: String = ''
-  threads: any = []
-  tags: any = []
+export default class Article extends Vue {
+  title: String = ''
+  createdAt: String = ''
+  comments: any = []
+  calcColor (childrenSize: Number): String {
+    console.log(childrenSize)
+    if (childrenSize > 2 && childrenSize <= 4) {
+      return 'blue--text font-medium'
+    } else if (childrenSize > 4 && childrenSize <= 6) {
+      return 'green--text font-big'
+    } else if (childrenSize > 6) {
+      return 'red--text font-super-big'
+    } else {
+      return 'font-small'
+    }
+  }
 
   convertFromHttpToHttps (imageUrl: String): String {
     if (imageUrl.match(/https/)) {
@@ -83,44 +77,37 @@ export default class Thread extends Vue {
   /** ライフサイクルフック */
   private created () {
     const id = this.$route.params.id
-    this.$store.dispatch('fetchThread', id).then(() => {
-      this.threadTitle = this.$store.getters.getThread.title
-      this.boardName = this.$store.getters.getThread.board_name
-      this.resCount = this.$store.getters.getThread.res_count
-      this.momentum = this.$store.getters.getThread.momentum
-      this.updatedAt = this.$store.getters.getThread.updated_at
-      this.threads = this.$store.getters.getThread.res_details
-      this.threadCreatedAt = this.$store.getters.getThread.thread_created_at
-      this.tags = this.$store.getters.getThread.key_words
+    this.$store.dispatch('fetchArticle', id).then(() => {
+      this.title = this.$store.getters.getArticle.title
+      this.createdAt = this.$store.getters.getArticle.created_at
+      this.comments = this.$store.getters.getArticle.res_details
     }
     )
   }
 }
 </script>
 <style scoped>
-#Thread {
-  margin-top: 20px;
-}
 .res {
   pointer-events: none;
-  font-size: 2rem;
-  font-weight: 600
 }
-i {
-  margin-right: 10px;
+.font-small {
+  font-size: 1rem
 }
-span {
-  margin-right: 20px;
+
+.font-medium {
+  font-size: 1.2rem
 }
-h2 {
-  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
-  color: #f4f4f4;/*文字色*/
-  border-left: solid 10px rgba(207, 202, 202, 0.795);/*左線*/
-  /*border-bottom: solid 3px rgba(207, 202, 202, 0.795);/*下線*/
+
+.font-big {
+  font-size: 1.4rem
+}
+
+.font-super-big {
+  font-size: 1.6rem
 }
 
 @media screen and (min-width: 768px) {
-  #Thread{
+  #Article{
     margin: auto;
     max-width: 60%;
   }

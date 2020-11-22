@@ -11,8 +11,11 @@ const state = {
   players: [],
   videos: [],
   threads: [],
+  articles: [],
+  ranking: [],
   top: null,
   thread: null,
+  article: null,
   paging_key: null
 }
 
