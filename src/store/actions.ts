@@ -77,8 +77,8 @@ export default {
       })
       .catch(err => { throw err })
   },
-  fetchRanking: ({ commit, state }: { commit: any, state: any }, type: bigint) => {
-    return Ranking.fetchList(type)
+  fetchRanking: ({ commit, state }: { commit: any, state: any }) => {
+    return Ranking.fetchList()
       .then((res: any) => {
         commit(types.FETCH_RANKING, res.sc_threads)
       })
