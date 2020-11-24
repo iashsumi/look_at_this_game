@@ -51,20 +51,14 @@ export default {
       },
       {
         id: 2,
-        name: 'ゲーム実況者',
-        path: '/playerlist',
-        icon: 'mic'
-      },
-      {
-        id: 3,
         name: 'ゲーム実況アンテナ',
         path: '/videos',
         icon: 'video_library'
       },
       {
-        id: 4,
-        name: 'ゲーム情報スレまとめ',
-        path: '/threads',
+        id: 3,
+        name: 'ゲーム情報まとめ',
+        path: '/articles',
         icon: 'view_headline'
       }
     ]

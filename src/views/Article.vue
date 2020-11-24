@@ -3,8 +3,35 @@
     <br>
     <h1 align="left" style="font-size: 1.6rem">{{title}} </h1>
     <br>
+    <v-icon>title</v-icon>
+    <span>{{gameTitle}}</span>
+    <br>
     <v-icon>access_time</v-icon>
     <span>{{createdAt}}</span>
+    <br>
+    <v-chip
+      class="ma-2"
+      color="blue"
+      label
+      text-color="white"
+    >
+      <v-icon left>
+        mdi-label
+      </v-icon>
+      {{gameTitleMin}}
+    </v-chip>
+
+      <v-chip
+      class="ma-2"
+      color="blue"
+      label
+      text-color="white"
+    >
+      <v-icon left>
+        mdi-label
+      </v-icon>
+      {{keyWord}}
+    </v-chip>
     <br>
     <v-card
       class="mx-auto"
@@ -18,8 +45,8 @@
               No: {{item.no}} 日付: {{item.date}} ID: {{item.id}}
             </v-list-item-subtitle>
             <h2 :class = calcColor(item.children.length) v-html="item.text"></h2>
-            <div v-for="image in item.images" :key="image" class='resizeimage'>
-              <img :src="convertFromHttpToHttps(image)"><img>
+            <div v-for="image in item.new_images" :key="image" class='resizeimage'>
+              <v-img :aspect-ratio="16/9" :src="buildUrl(image)"></v-img>
             </div>
           </v-list-item-content>
         </v-list-item>
@@ -32,7 +59,7 @@
               </v-list-item-subtitle>
               <p class='res' v-html="child.text"></p>
               <div v-for="image in child.images" :key="image" class='resizeimage'>
-                <img :src="convertFromHttpToHttps(image)"><img>
+                <v-img :aspect-ratio="16/9" :src="buildUrl(image)"></v-img>
               </div>
             </v-list-item-content>
           </v-list-item>
@@ -50,11 +77,15 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 
 @Component
 export default class Article extends Vue {
+  id: String = ''
   title: String = ''
+  gameTitle: String = ''
+  gameTitleMin: String = ''
+  keyWord: String = ''
   createdAt: String = ''
   comments: any = []
+
   calcColor (childrenSize: Number): String {
-    console.log(childrenSize)
     if (childrenSize > 2 && childrenSize <= 4) {
       return 'blue--text font-medium'
     } else if (childrenSize > 4 && childrenSize <= 6) {
@@ -66,19 +97,20 @@ export default class Article extends Vue {
     }
   }
 
-  convertFromHttpToHttps (imageUrl: String): String {
-    if (imageUrl.match(/https/)) {
-      return imageUrl
-    } else {
-      return imageUrl.replace('http', 'https')
-    }
+  buildUrl (image: string): string {
+    // console.log(` https://www.latg.site/matome_images/${itemId}/${image}`)
+    return ` https://www.latg.site/matome_images/${this.id}/${image}`
   }
 
   /** ライフサイクルフック */
   private created () {
     const id = this.$route.params.id
     this.$store.dispatch('fetchArticle', id).then(() => {
+      this.id = this.$store.getters.getArticle.id
       this.title = this.$store.getters.getArticle.title
+      this.gameTitle = this.$store.getters.getArticle.game.title
+      this.gameTitleMin = this.$store.getters.getArticle.game.title_min
+      this.keyWord = this.$store.getters.getArticle.key_word
       this.createdAt = this.$store.getters.getArticle.created_at
       this.comments = this.$store.getters.getArticle.res_details
     }
@@ -111,9 +143,7 @@ export default class Article extends Vue {
     margin: auto;
     max-width: 60%;
   }
-}
 
-@media screen and (min-width: 768px) {
   .resizeimage img {
     width: 40%;
     max-width: 40%;

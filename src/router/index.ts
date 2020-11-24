@@ -8,6 +8,7 @@ import Thread from '../views/Thread.vue'
 import Threads from '../views/Threads.vue'
 import VideoPlayer from '../views/VideoPlayer.vue'
 import Article from '../views/Article.vue'
+import Articles from '../views/Articles.vue'
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,12 @@ const routes = [
     path: '/article/:id',
     name: 'Article',
     component: Article,
+    meta: { title: 'スレまとめ', desc: 'ゲーム関連スレのまとめ' }
+  },
+  {
+    path: '/articles/',
+    name: 'Articles',
+    component: Articles,
     meta: { title: 'スレまとめ', desc: 'ゲーム関連スレのまとめ' }
   }
 ]

@@ -20,6 +20,7 @@
               {{video.commentator_name}}<br>
               再生回数: {{video.view_count}}
           </v-card>
+          <br>
         </v-col>
       </v-row>
     </v-container>
@@ -35,14 +36,14 @@
           class="base_size"
         >
           <v-card rounded @click="goDetail(item)">
-            <v-img v-if="item.thumbnail_url" :aspect-ratio="16/9" :src="item.thumbnail_url"></v-img>
-            <v-img v-else :aspect-ratio="16/9" :src="item.board_thumbnail_url"></v-img>
+            <v-img :aspect-ratio="16/9" :src="fetchImage(item)"></v-img>
             <h3 class="title">{{item.title}}</h3>
             <v-icon>access_time</v-icon>
             <span>{{item.created_at}}</span><br>
             <v-icon>title</v-icon>
             <span>{{item.game.title}}</span>
           </v-card>
+          <br>
         </v-col>
       </v-row>
     </v-container>
@@ -71,7 +72,6 @@ export default class Top extends Mixins(Site) {
   }
   private get articles (): any {
     if (this.$store.getters.getArticles) {
-      console.log(this.$store.getters.getArticles)
       return this.$store.getters.getArticles
     } else {
       return []
@@ -90,6 +90,13 @@ export default class Top extends Mixins(Site) {
 
   goDetail (item): void {
     this.$router.push({ name: 'Article', params: { id: item.id } })
+  }
+
+  fetchImage (item): string {
+    if (item.thumbnail_url) {
+      return ` https://www.latg.site/matome_images/${item.id}/${item.thumbnail_url}`
+    }
+    return ''
   }
 }
 </script>
