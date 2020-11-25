@@ -45,8 +45,8 @@
               No: {{item.no}} 日付: {{item.date}} ID: {{item.id}}
             </v-list-item-subtitle>
             <h2 :class = calcColor(item.children.length) v-html="item.text"></h2>
-            <div v-for="image in item.new_images" :key="image" class='resizeimage'>
-              <v-img :aspect-ratio="16/9" :src="buildUrl(image)"></v-img>
+            <div v-for="image in uniq(item.new_images)" :key="image" class='resizeimage'>
+              <img :src="buildUrl(image)">
             </div>
           </v-list-item-content>
         </v-list-item>
@@ -58,8 +58,8 @@
                 No: {{child.no}} 日付: {{child.date}} ID: {{child.id}}
               </v-list-item-subtitle>
               <p class='res' v-html="child.text"></p>
-              <div v-for="image in child.images" :key="image" class='resizeimage'>
-                <v-img :aspect-ratio="16/9" :src="buildUrl(image)"></v-img>
+              <div v-for="image in uniq(child.new_images)" :key="image" class='resizeimage'>
+                <img :src="buildUrl(image)">
               </div>
             </v-list-item-content>
           </v-list-item>
@@ -97,8 +97,14 @@ export default class Article extends Vue {
     }
   }
 
+  uniq (images: Array<string>): Array<string> {
+    return Array.from(new Set(images))
+  }
+
   buildUrl (image: string): string {
-    // console.log(` https://www.latg.site/matome_images/${itemId}/${image}`)
+    if (image === 'NoImage') {
+      return '/img/no_image_yoko.jpg'
+    }
     return ` https://www.latg.site/matome_images/${this.id}/${image}`
   }
 
@@ -145,8 +151,7 @@ export default class Article extends Vue {
   }
 
   .resizeimage img {
-    width: 40%;
-    max-width: 40%;
+    max-width: 50%;
     height: auto;
   }
 }

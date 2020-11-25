@@ -71,10 +71,10 @@ export default class Articles extends Vue {
   }
 
   buildUrl (item: any): string {
-    if (item.thumbnail_url) {
+    if (item.thumbnail_url && item.thumbnail_url !== 'NoImage') {
       return ` https://www.latg.site/matome_images/${item.id}/${item.thumbnail_url}`
     }
-    return ''
+    return ` https://www.latg.site/default_images/games/${item.game.thumbnail}`
   }
 
   /** computed */
