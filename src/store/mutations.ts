@@ -7,6 +7,9 @@ export default {
   [types.FETCH_VIDEOS] (state: any, payload: any) {
     state.videos = payload
   },
+  [types.FETCH_VIDEO] (state: any, payload: any) {
+    state.video = payload
+  },
   [types.FETCH_PLAYERS] (state: any, payload: any) {
     state.players = payload
   },

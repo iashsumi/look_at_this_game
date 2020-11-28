@@ -15,6 +15,7 @@ const state = {
   ranking: [],
   top: null,
   thread: null,
+  video: null,
   article: null,
   paging_key: null
 }

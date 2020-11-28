@@ -10,7 +10,7 @@ export default {
       .catch(err => { throw err })
   },
   fetchVideos: ({ commit, state }: { commit: any, state: any }, key: any) => {
-    return Videos.fetch(key)
+    return Videos.fetchList(key)
       .then((res: any) => {
         const pagingKey = {
           'total_count': res.meta.total_count,
@@ -23,6 +23,14 @@ export default {
         } else {
           commit(types.FETCH_VIDEOS, res.videos)
         }
+      })
+      .catch(err => { throw err })
+  },
+  fetchVideo: ({ commit, state }: { commit: any, state: any }, id: String) => {
+    return Videos.fetch(id)
+      .then((res: any) => {
+        commit(types.FETCH_VIDEO, res)
+        return res
       })
       .catch(err => { throw err })
   },

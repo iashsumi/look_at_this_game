@@ -1,5 +1,6 @@
 export const DRAWER_UPDATE = 'DRAWER_UPDATE'
 export const FETCH_VIDEOS = 'FETCH_VIDEOS'
+export const FETCH_VIDEO = 'FETCH_VIDEO'
 export const PAGING_KEY = 'PAGING_KEY'
 export const FETCH_PLAYERS = 'FETCH_PLAYERS'
 export const FETCH_TOP = 'FETCH_TOP'

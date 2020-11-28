@@ -119,14 +119,17 @@ export default class Article extends Vue {
   private created () {
     const id = this.$route.params.id
     this.$store.dispatch('fetchArticle', id).then(() => {
-      this.id = this.$store.getters.getArticle.id
-      this.title = this.$store.getters.getArticle.title
-      this.gameTitle = this.$store.getters.getArticle.game.title
-      this.gameTitleMin = this.$store.getters.getArticle.game.title_min
-      this.keyWord = this.$store.getters.getArticle.key_word
-      this.createdAt = this.$store.getters.getArticle.created_at
-      this.comments = this.$store.getters.getArticle.res_details
-      this.exclusionNumber = this.$store.getters.getArticle.exclusion_number.split(',')
+      const article = this.$store.getters.getArticle
+      this.id = article.id
+      this.title = article.title
+      this.gameTitle = article.title
+      this.gameTitleMin = article.game.title_min
+      this.keyWord = article.key_word
+      this.createdAt = article.created_at
+      this.comments = article.res_details
+      if (article.exclusion_number) {
+        this.exclusionNumber = article.exclusion_number.split(',')
+      }
     }
     )
   }

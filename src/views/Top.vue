@@ -12,13 +12,17 @@
           class= "base_size"
         >
           <v-card rounded @click="goPlayPage(video)">
-            <v-img :aspect-ratio="16/9" :src="video.thumbnail_url"><span :class="kindColor(video.site_kbn)">{{ siteName(video.site_kbn) }}</span><br></v-img>
+            <v-img :aspect-ratio="16/9" :src="video.thumbnail_url"><br></v-img>
             <h3 class= 'title'>{{video.title}}</h3>
-              <v-avatar size="26">
-                <v-img :src="video.commentator_thumbnail_url"></v-img>
-              </v-avatar>
-              {{video.commentator_name}}<br>
-              再生回数: {{video.view_count}}
+            <div class='time'>
+              <v-icon>access_time</v-icon>
+              {{ video.published_at }}
+            </div>
+              <PlayerLabel
+                :thumbnailUrl="video.commentator_thumbnail_url"
+                :name="video.commentator_name"
+              />
+            <span :class="kindColor(video.site_kbn)">{{ siteName(video.site_kbn) }}</span>
           </v-card>
           <br>
         </v-col>
@@ -53,12 +57,14 @@
 <script lang="ts">
 import { Component, Vue, Mixins } from 'vue-property-decorator'
 import ThreadItem from '../components/ThreadItem.vue'
+import PlayerLabel from '../components/PlayerLabel.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import Site from '../common/site'
 
 @Component({
   components: {
-    ThreadItem
+    ThreadItem,
+    PlayerLabel
   }
 })
 export default class Top extends Mixins(Site) {
@@ -112,6 +118,11 @@ export default class Top extends Mixins(Site) {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+.time {
+  padding-bottom: 3px;
+}
+
 p {
   /* v-card-textと同等のスタイル */
   color: rgba(255, 255, 255, 0.7);

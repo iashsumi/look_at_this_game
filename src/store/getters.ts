@@ -5,6 +5,9 @@ export default {
   getVideos: (state: any) => {
     return state.videos
   },
+  getVideo: (state: any) => {
+    return state.video
+  },
   getTop: (state: any) => {
     return state.top
   },

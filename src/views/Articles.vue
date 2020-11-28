@@ -1,45 +1,25 @@
 <template>
   <div id="Articles">
     <v-row no-gutters>
-      <br>
       <v-col
         v-for="article in this.articles"
         :key="article.id"
         cols="12"
         sm="12"
       >
-      <v-card
-        outlined
-        flat
-        @click="goDetailPage(article.id)"
+      <ListItem
+        :id="article.id"
+        :title="article.title"
+        :publishAt="article.created_at"
+        :thumbnailUrl="buildUrl(article)"
+        @child-event="goDetailPage($event)"
       >
-        <v-row no-gutters>
-          <v-col
-            xs="12"
-            sm="3"
-            md="2"
-          >
-            <v-img
-              class='image-trim'
-              :src="buildUrl(article)">
-            </v-img>
-
-          </v-col>
-          <v-col
-            xs="12"
-            sm="9"
-            md="10"
-          >
-            <v-list-item two-line>
-              <v-list-item-content>
-                <h2 class="title">{{ article.title }}</h2>
-                <v-list-item-subtitle>公開日: {{ article.created_at }}</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-col>
-        </v-row>
-      </v-card>
-      <br>
+        <template v-slot:option>
+          <span>
+            <span><v-icon>title</v-icon>{{article.game.title}}</span>
+          </span>
+        </template>
+      </ListItem>
       </v-col>
       <v-col cols="12" sm="12">
         <v-btn v-if="disp" @click="nextPage">さらに読み込む</v-btn>
@@ -50,12 +30,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import Video from '../components/Video.vue'
+import ListItem from '../components/ListItem.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 @Component({
   components: {
-    Video
+    ListItem
   }
 })
 export default class Articles extends Vue {
@@ -66,8 +46,8 @@ export default class Articles extends Vue {
     this.$store.dispatch('fetchArticles', key + 1)
   }
 
-  goDetailPage (itemId: number): void {
-    this.$router.push({ name: 'Article', params: { id: ` ${itemId}` } })
+  goDetailPage (event: any): void {
+    this.$router.push({ name: 'Article', params: { id: String(event) } })
   }
 
   buildUrl (item: any): string {
