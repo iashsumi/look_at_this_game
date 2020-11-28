@@ -39,30 +39,32 @@
     >
       <v-list three-line>
       <div v-for="item in comments" :key="item.no">
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-subtitle>
-              No: {{item.no}} 日付: {{item.date}} ID: {{item.id}}
-            </v-list-item-subtitle>
-            <h2 :class = calcColor(item.children.length) v-html="item.text"></h2>
-            <div v-for="image in uniq(item.new_images)" :key="image" class='resizeimage'>
-              <img :src="buildUrl(image)">
-            </div>
-          </v-list-item-content>
-        </v-list-item>
-        <div v-for="child in item.children" :key="child.no">
+        <div v-if="notExcludeData(item.no)">
           <v-list-item>
-            <v-icon>reply</v-icon>
             <v-list-item-content>
               <v-list-item-subtitle>
-                No: {{child.no}} 日付: {{child.date}} ID: {{child.id}}
+                No: {{item.no}} 日付: {{item.date}} ID: {{item.id}}
               </v-list-item-subtitle>
-              <p class='res' v-html="child.text"></p>
-              <div v-for="image in uniq(child.new_images)" :key="image" class='resizeimage'>
+              <h2 :class = calcColor(item.children.length) v-html="item.text"></h2>
+              <div v-for="image in uniq(item.new_images)" :key="image" class='resizeimage'>
                 <img :src="buildUrl(image)">
               </div>
             </v-list-item-content>
           </v-list-item>
+          <div v-for="child in item.children" :key="child.no">
+            <v-list-item v-if="notExcludeData(child.no)">
+              <v-icon>reply</v-icon>
+              <v-list-item-content>
+                <v-list-item-subtitle>
+                  No: {{child.no}} 日付: {{child.date}} ID: {{child.id}}
+                </v-list-item-subtitle>
+                <p class='res' v-html="child.text"></p>
+                <div v-for="image in uniq(child.new_images)" :key="image" class='resizeimage'>
+                  <img :src="buildUrl(image)">
+                </div>
+              </v-list-item-content>
+            </v-list-item>
+          </div>
         </div>
         <v-divider class="mx-4"></v-divider>
       </div>
@@ -84,6 +86,7 @@ export default class Article extends Vue {
   keyWord: String = ''
   createdAt: String = ''
   comments: any = []
+  exclusionNumber: Array<String> = []
 
   calcColor (childrenSize: Number): String {
     if (childrenSize > 2 && childrenSize <= 4) {
@@ -108,6 +111,10 @@ export default class Article extends Vue {
     return ` https://www.latg.site/matome_images/${this.id}/${image}`
   }
 
+  notExcludeData (no: Number): Boolean {
+    return !this.exclusionNumber.includes(String(no))
+  }
+
   /** ライフサイクルフック */
   private created () {
     const id = this.$route.params.id
@@ -119,6 +126,7 @@ export default class Article extends Vue {
       this.keyWord = this.$store.getters.getArticle.key_word
       this.createdAt = this.$store.getters.getArticle.created_at
       this.comments = this.$store.getters.getArticle.res_details
+      this.exclusionNumber = this.$store.getters.getArticle.exclusion_number.split(',')
     }
     )
   }
