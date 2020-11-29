@@ -92,6 +92,10 @@ export default class Top extends Mixins(Site) {
     this.$store.dispatch('fetchArticles')
   }
 
+  private mounted () {
+    document.title = 'Look@Game'
+  }
+
   goPlayPage (video): void {
     this.$router.push({ name: 'VideoPlayer', params: { id: video.id } })
   }

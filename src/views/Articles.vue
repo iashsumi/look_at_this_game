@@ -76,7 +76,7 @@ export default class Articles extends Vue {
   }
 
   private mounted () {
-    document.title = '最新のまとめ記事一覧'
+    document.title = 'Look@Game | まとめ一覧'
   }
 }
 </script>

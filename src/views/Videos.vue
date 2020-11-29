@@ -72,6 +72,10 @@ export default class Videos extends Mixins(Site) {
       this.disp = true
     })
   }
+
+  private mounted () {
+    document.title = 'Lool@Game | 動画一覧'
+  }
 }
 </script>
 <style scoped>

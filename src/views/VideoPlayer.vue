@@ -62,6 +62,10 @@ export default class VideoPlayer extends Vue {
       this.load = true
     })
   }
+
+  private mounted () {
+    document.title = 'Lool@Game | 動画'
+  }
 }
 </script>
 <style scoped>

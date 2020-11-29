@@ -51,13 +51,13 @@ export default {
       },
       {
         id: 2,
-        name: 'ゲーム実況アンテナ',
+        name: '動画一覧',
         path: '/videos',
         icon: 'video_library'
       },
       {
         id: 3,
-        name: 'ゲーム情報まとめ',
+        name: 'まとめ一覧',
         path: '/articles',
         icon: 'view_headline'
       }
