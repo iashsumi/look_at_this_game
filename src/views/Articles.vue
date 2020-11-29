@@ -11,12 +11,13 @@
         :id="article.id"
         :title="article.title"
         :publishAt="article.created_at"
-        :thumbnailUrl="buildUrl(article)"
+        :thumbnailUrl="buildImageUrl(article)"
         @child-event="goDetailPage($event)"
       >
         <template v-slot:option>
           <span>
             <span><v-icon>title</v-icon>{{article.game.title}}</span>
+            <a :href="goDetailUrl(article)"/>
           </span>
         </template>
       </ListItem>
@@ -50,11 +51,16 @@ export default class Articles extends Vue {
     this.$router.push({ name: 'Article', params: { id: String(event) } })
   }
 
-  buildUrl (item: any): string {
+  buildImageUrl (item: any): string {
     if (item.thumbnail_url && item.thumbnail_url !== 'NoImage') {
       return ` https://www.latg.site/matome_images/${item.id}/${item.thumbnail_url}`
     }
     return ` https://www.latg.site/default_images/games/${item.game.thumbnail}`
+  }
+
+  // SEO対策としてaタグを埋め込む
+  goDetailUrl (item): String {
+    return ` https://www.latg.site/article/${item.id}`
   }
 
   /** computed */
@@ -67,6 +73,10 @@ export default class Articles extends Vue {
     this.$store.dispatch('fetchArticles').then(() => {
       this.disp = true
     })
+  }
+
+  private mounted () {
+    document.title = '最新のまとめ記事一覧'
   }
 }
 </script>

@@ -12,6 +12,7 @@
           class= "base_size"
         >
           <v-card rounded @click="goPlayPage(video)">
+            <a :href="goPlayPagelUrl(video)"/>
             <v-img :aspect-ratio="16/9" :src="video.thumbnail_url"><br></v-img>
             <h3 class= 'title'>{{video.title}}</h3>
             <div class='time'>
@@ -40,6 +41,7 @@
           class="base_size"
         >
           <v-card rounded @click="goDetail(item)">
+            <a :href="goDetailUrl(item)"/>
             <v-img :aspect-ratio="16/9" :src="fetchImage(item)"></v-img>
             <h3 class="title">{{item.title}}</h3>
             <v-icon>access_time</v-icon>
@@ -92,6 +94,15 @@ export default class Top extends Mixins(Site) {
 
   goPlayPage (video): void {
     this.$router.push({ name: 'VideoPlayer', params: { id: video.id } })
+  }
+
+  // SEO対策としてaタグを埋め込む
+  goPlayPagelUrl (item): String {
+    return ` https://www.latg.site/videoplayer/${item.id}`
+  }
+
+  goDetailUrl (item): String {
+    return ` https://www.latg.site/article/${item.id}`
   }
 
   goDetail (item): void {

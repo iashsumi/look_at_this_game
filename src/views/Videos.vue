@@ -20,6 +20,7 @@
               :name="video.commentator_name"
             />
             <span :class="kindColor(video.site_kbn)" class= "kind-format">{{ siteName(video.site_kbn) }}</span>
+            <a :href="goPlayPagelUrl(video)"/>
           </template>
         </ListItem>
       </v-col>
@@ -53,6 +54,11 @@ export default class Videos extends Mixins(Site) {
 
   goDetailPage (event: any): void {
     this.$router.push({ name: 'VideoPlayer', params: { id: String(event) } })
+  }
+
+  // SEO対策としてaタグを埋め込む
+  goPlayPagelUrl (item): String {
+    return ` https://www.latg.site/videoplayer/${item.id}`
   }
 
   /** computed */

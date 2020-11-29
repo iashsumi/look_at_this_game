@@ -5,4 +5,14 @@
   <priority>1.0</priority>
   <changefreq>hourly</changefreq>
 </url>
+<url>
+  <loc>https://www.latg.site/videos</loc>
+  <priority>1.0</priority>
+  <changefreq>hourly</changefreq>
+</url>
+<url>
+  <loc>https://www.latg.site/articles</loc>
+  <priority>1.0</priority>
+  <changefreq>hourly</changefreq>
+</url>
 </urlset>

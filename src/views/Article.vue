@@ -122,7 +122,7 @@ export default class Article extends Vue {
       const article = this.$store.getters.getArticle
       this.id = article.id
       this.title = article.title
-      this.gameTitle = article.title
+      this.gameTitle = article.game.title
       this.gameTitleMin = article.game.title_min
       this.keyWord = article.key_word
       this.createdAt = article.created_at
@@ -130,6 +130,52 @@ export default class Article extends Vue {
       if (article.exclusion_number) {
         this.exclusionNumber = article.exclusion_number.split(',')
       }
+      const pageTitle = ` Look@Game | ${this.title}`
+      const pageDescription = ` ${this.gameTitle}(${this.gameTitleMin})${this.keyWord}関連のまとめ`
+      let imagePath = ''
+      if (article.thumbnail_url && article.thumbnail_url !== 'NoImage') {
+        imagePath = ` https://www.latg.site/matome_images/${this.id}/${article.thumbnail_url}`
+      } else {
+        imagePath = ` https://www.latg.site/default_images/games/${article.game.thumbnail}`
+      }
+      // 以下SEO対策
+      document.title = pageTitle
+      const item = document.createElement('meta')
+      item.setAttribute('name', 'description')
+      item.setAttribute('content', pageDescription)
+      document.getElementsByTagName('head')[0].appendChild(item)
+      const item2 = document.createElement('meta')
+      item2.setAttribute('name', 'og:url')
+      item2.setAttribute('content', ` https://www.latg.site/article/${this.id}`)
+      document.getElementsByTagName('head')[0].appendChild(item2)
+      const item3 = document.createElement('meta')
+      item3.setAttribute('name', 'og:type')
+      item3.setAttribute('content', 'article')
+      document.getElementsByTagName('head')[0].appendChild(item3)
+      const item4 = document.createElement('meta')
+      item4.setAttribute('name', 'og:title')
+      item4.setAttribute('content', pageTitle)
+      document.getElementsByTagName('head')[0].appendChild(item4)
+      const item5 = document.createElement('meta')
+      item5.setAttribute('name', 'og:description')
+      item5.setAttribute('content', pageDescription)
+      document.getElementsByTagName('head')[0].appendChild(item5)
+      const item6 = document.createElement('meta')
+      item6.setAttribute('name', 'og:site_name')
+      item6.setAttribute('content', 'Look@Game')
+      document.getElementsByTagName('head')[0].appendChild(item6)
+      const item7 = document.createElement('meta')
+      item7.setAttribute('name', 'og:image')
+      item7.setAttribute('content', imagePath)
+      document.getElementsByTagName('head')[0].appendChild(item7)
+      const item8 = document.createElement('meta')
+      item8.setAttribute('name', 'twitter:card')
+      item8.setAttribute('content', 'summary_large_image')
+      document.getElementsByTagName('head')[0].appendChild(item8)
+      const item9 = document.createElement('meta')
+      item9.setAttribute('name', 'twitter:site')
+      item9.setAttribute('content', '@LookGame4')
+      document.getElementsByTagName('head')[0].appendChild(item9)
     }
     )
   }
