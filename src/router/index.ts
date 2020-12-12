@@ -9,6 +9,7 @@ import Threads from '../views/Threads.vue'
 import VideoPlayer from '../views/VideoPlayer.vue'
 import Article from '../views/Article.vue'
 import Articles from '../views/Articles.vue'
+import ArticleSearchResult from '../views/ArticleSearchResult.vue'
 
 Vue.use(VueRouter)
 
@@ -64,6 +65,12 @@ const routes = [
     path: '/articles/',
     name: 'Articles',
     component: Articles,
+    meta: { title: 'スレまとめ', desc: 'ゲーム関連スレのまとめ' }
+  },
+  {
+    path: '/articles/search/:word',
+    name: 'ArticleSearch',
+    component: ArticleSearchResult,
     meta: { title: 'スレまとめ', desc: 'ゲーム関連スレのまとめ' }
   }
 ]

@@ -13,6 +13,7 @@ const state = {
   threads: [],
   articles: [],
   ranking: [],
+  article_search_result: [],
   top: null,
   thread: null,
   video: null,

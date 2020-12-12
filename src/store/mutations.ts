@@ -30,5 +30,9 @@ export default {
   },
   [types.FETCH_ARTICLES] (state: any, payload: any) {
     state.articles = payload
+  },
+  [types.FETCH_ARTICLE_SEARCH_RESULT] (state: any, payload: any) {
+    state.article_search_result = payload
   }
+
 }

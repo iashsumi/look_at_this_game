@@ -14,6 +14,7 @@
       color="blue"
       label
       text-color="white"
+      @click="search(gameTitleMin)"
     >
       <v-icon left>
         mdi-label
@@ -26,6 +27,7 @@
       color="blue"
       label
       text-color="white"
+      @click="search(keyWord)"
     >
       <v-icon left>
         mdi-label
@@ -45,7 +47,7 @@
               <v-list-item-subtitle>
                 No: {{item.no}} 日付: {{item.date}} ID: {{item.id}}
               </v-list-item-subtitle>
-              <h2 :class = calcColor(item.children.length) v-html="item.text"></h2>
+              <h2 :class = calcColor(item.children.length) v-html="format(item.text)"></h2>
               <div v-for="image in uniq(item.new_images)" :key="image" class='resizeimage'>
                 <img :src="buildUrl(image)">
               </div>
@@ -58,7 +60,7 @@
                 <v-list-item-subtitle>
                   No: {{child.no}} 日付: {{child.date}} ID: {{child.id}}
                 </v-list-item-subtitle>
-                <p class='res' v-html="child.text"></p>
+                <p class='res' v-html="format(child.text)"></p>
                 <div v-for="image in uniq(child.new_images)" :key="image" class='resizeimage'>
                   <img :src="buildUrl(image)">
                 </div>
@@ -70,11 +72,34 @@
       </div>
       </v-list>
     </v-card>
+    <br>
+    <h2 align="center">関連記事</h2>
+    <v-container fluid>
+      <v-row dense>
+        <v-col
+          v-for="item in relations"
+          :key="item.id"
+          md="6"
+          sm="6"
+          xs="12"
+          class="base_size"
+        >
+          <v-card rounded @click="goDetail(item)">
+            <a :href="goDetailUrl(item)"/>
+            <v-img :aspect-ratio="16/9" :src="fetchImage(item)"></v-img>
+            <h3 class="title">{{item.title}}</h3>
+            <v-icon>access_time</v-icon>
+            <span>{{item.created_at}}</span>
+          </v-card>
+          <br>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 @Component
@@ -87,6 +112,36 @@ export default class Article extends Vue {
   createdAt: String = ''
   comments: any = []
   exclusionNumber: Array<String> = []
+  relations: any = []
+  game: any = []
+
+  @Watch('$route')
+  onRouteChanged (to: any, from: any) {
+    const id = this.$route.params.id
+    this.$store.dispatch('fetchArticle', id).then(() => {
+      const article = this.$store.getters.getArticle
+      this.id = article.id
+      this.title = article.title
+      this.gameTitle = article.game.title
+      this.gameTitleMin = article.game.title_min
+      this.keyWord = article.key_word
+      this.createdAt = article.created_at
+      this.comments = article.res_details
+      this.relations = article.relations
+      this.game = article.game
+      if (article.exclusion_number) {
+        this.exclusionNumber = article.exclusion_number.split(',')
+      }
+      const pageTitle = ` Look@Game | ${this.title}`
+      const pageDescription = ` ${this.gameTitle}(${this.gameTitleMin})${this.keyWord}関連のまとめ`
+      // 以下SEO対策
+      document.title = pageTitle
+      let item = document.querySelector("meta[name='description']")
+      if (item) item.setAttribute('content', pageDescription)
+    }
+    )
+    window.scrollTo(0, 0)
+  }
 
   calcColor (childrenSize: Number): String {
     if (childrenSize > 2 && childrenSize <= 4) {
@@ -115,6 +170,35 @@ export default class Article extends Vue {
     return !this.exclusionNumber.includes(String(no))
   }
 
+  goDetailUrl (item): String {
+    return ` https://www.latg.site/article/${item.id}`
+  }
+
+  goDetail (item): void {
+    this.$router.push({ name: 'Article', params: { id: item.id } })
+  }
+
+  fetchImage (item): string {
+    if (item.thumbnail_url && item.thumbnail_url !== 'NoImage') {
+      return ` https://www.latg.site/matome_images/${item.id}/${item.thumbnail_url}`
+    }
+    return ` https://www.latg.site/default_images/games/${this.game.thumbnail}`
+  }
+
+  format (text): string {
+    const text1 = text.replace('(deleted an unsolicited ad)', '')
+    const text2 = text1.replace(/<a/g, '<span style="color:#029FDD; font-weight: 900;"')
+    const text3 = text2.replace(/<\/a>/g, '</span>')
+    const text4 = text3.replace(/<br> <br> /, '')
+    return text4
+  }
+
+  search (text: string) {
+    console.log('AAA')
+    this.$store.dispatch('initSearchResult')
+    this.$router.push({ name: 'ArticleSearch', params: { word: text } })
+  }
+
   /** ライフサイクルフック */
   private created () {
     const id = this.$route.params.id
@@ -127,31 +211,17 @@ export default class Article extends Vue {
       this.keyWord = article.key_word
       this.createdAt = article.created_at
       this.comments = article.res_details
+      this.relations = article.relations
+      this.game = article.game
       if (article.exclusion_number) {
         this.exclusionNumber = article.exclusion_number.split(',')
       }
       const pageTitle = ` Look@Game | ${this.title}`
       const pageDescription = ` ${this.gameTitle}(${this.gameTitleMin})${this.keyWord}関連のまとめ`
-      let imagePath = ''
-      if (article.thumbnail_url && article.thumbnail_url !== 'NoImage') {
-        imagePath = ` https://www.latg.site/matome_images/${this.id}/${article.thumbnail_url}`
-      } else {
-        imagePath = ` https://www.latg.site/default_images/games/${article.game.thumbnail}`
-      }
       // 以下SEO対策
       document.title = pageTitle
       let item = document.querySelector("meta[name='description']")
       if (item) item.setAttribute('content', pageDescription)
-      item = document.querySelector("meta[property='og:url']")
-      if (item) item.setAttribute('content', ` https://www.latg.site/article/${this.id}`)
-      item = document.querySelector("meta[property='og:type']")
-      if (item) item.setAttribute('content', 'article')
-      item = document.querySelector("meta[property='og:title']")
-      if (item) item.setAttribute('content', pageTitle)
-      item = document.querySelector("meta[property='og:description']")
-      if (item) item.setAttribute('content', pageDescription)
-      item = document.querySelector("meta[property='og:image']")
-      if (item) item.setAttribute('content', imagePath)
     }
     )
   }
@@ -193,6 +263,11 @@ export default class Article extends Vue {
     width: 100%;
     max-width: 100%;
     height: auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  .base_size {
+    min-width: 100%;
   }
 }
 </style>

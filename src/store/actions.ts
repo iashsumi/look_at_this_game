@@ -85,6 +85,31 @@ export default {
       })
       .catch(err => { throw err })
   },
+  searchArticles: ({ commit, state }: { commit: any, state: any }, params: any) => {
+    console.log('keyWord')
+    return Articles.search(params.keyWord, params.key)
+      .then((res: any) => {
+        console.log(res)
+        const pagingKey = {
+          'total_count': res.meta.total_count,
+          'total_pages': res.meta.total_pages,
+          'current_page': res.meta.current_page
+        }
+        commit(types.PAGING_KEY, pagingKey)
+        if (params.key) {
+          console.log('ENTER!!')
+          commit(types.FETCH_ARTICLE_SEARCH_RESULT, state.article_search_result.concat(res.articles))
+        } else {
+          console.log('OK')
+          console.log(params.keyWord)
+          commit(types.FETCH_ARTICLE_SEARCH_RESULT, res.articles)
+        }
+      })
+      .catch(err => { throw err })
+  },
+  initSearchResult: ({ commit, state }: { commit: any, state: any }) => {
+    commit(types.FETCH_ARTICLE_SEARCH_RESULT, null)
+  },
   fetchRanking: ({ commit, state }: { commit: any, state: any }) => {
     return Ranking.fetchList()
       .then((res: any) => {

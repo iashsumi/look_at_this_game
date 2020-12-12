@@ -28,5 +28,8 @@ export default {
   },
   getArticles: (state: any) => {
     return state.articles
+  },
+  getArticleSearchResult: (state: any) => {
+    return state.article_search_result
   }
 }

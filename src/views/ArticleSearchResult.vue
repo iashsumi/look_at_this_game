@@ -39,12 +39,13 @@ import { mapState, mapGetters, mapActions } from 'vuex'
     ListItem
   }
 })
-export default class Articles extends Vue {
+export default class ArticleSearchResult extends Vue {
   disp: boolean = false
+  word: string = ''
 
   nextPage (): void {
     const key = this.$store.getters.getPagingKey.current_page
-    this.$store.dispatch('fetchArticles', key + 1)
+    this.$store.dispatch('searchArticles', { key: key + 1, keyWord: this.word })
   }
 
   goDetailPage (event: any): void {
@@ -65,22 +66,27 @@ export default class Articles extends Vue {
 
   /** computed */
   private get articles (): any {
-    return this.$store.getters.getArticles
+    console.log('HHH')
+    console.log(this.$store.getters.getArticleSearchResult)
+    return this.$store.getters.getArticleSearchResult
   }
 
   /** ライフサイクルフック */
   private created () {
-    if (this.$store.getters.getArticles.length !== 0) {
+    this.word = this.$route.params.word
+    console.log('word')
+    console.log(this.word)
+    if (this.$store.getters.getArticleSearchResult && this.$store.getters.getArticleSearchResult.length !== 0) {
       this.disp = true
       return
     }
-    this.$store.dispatch('fetchArticles').then(() => {
+    this.$store.dispatch('searchArticles', { keyWord: this.word }).then(() => {
       this.disp = true
     })
   }
 
   private mounted () {
-    document.title = 'Look@Game | まとめ一覧'
+    document.title = 'Look@Game | 検索結果一覧'
   }
 }
 </script>
