@@ -1,5 +1,6 @@
 <template>
   <div id="Article">
+    <Tweet id="1334642830795366400"></Tweet>
     <br>
     <h1 align="left" style="font-size: 1.6rem">{{title}} </h1>
     <br>
@@ -127,7 +128,6 @@ export default class Article extends Vue {
       this.keyWord = article.key_word
       this.createdAt = article.created_at
       this.comments = article.res_details
-      this.relations = article.relations
       this.game = article.game
       if (article.exclusion_number) {
         this.exclusionNumber = article.exclusion_number.split(',')
@@ -138,6 +138,9 @@ export default class Article extends Vue {
       document.title = pageTitle
       let item = document.querySelector("meta[name='description']")
       if (item) item.setAttribute('content', pageDescription)
+      this.$store.dispatch('searchArticles', { keyWord: this.gameTitleMin }).then((res) => {
+        this.relations = res.articles.slice(1, 7)
+      })
     }
     )
     window.scrollTo(0, 0)
@@ -194,7 +197,6 @@ export default class Article extends Vue {
   }
 
   search (text: string) {
-    console.log('AAA')
     this.$store.dispatch('initSearchResult')
     this.$router.push({ name: 'ArticleSearch', params: { word: text } })
   }
@@ -211,7 +213,6 @@ export default class Article extends Vue {
       this.keyWord = article.key_word
       this.createdAt = article.created_at
       this.comments = article.res_details
-      this.relations = article.relations
       this.game = article.game
       if (article.exclusion_number) {
         this.exclusionNumber = article.exclusion_number.split(',')
@@ -222,6 +223,9 @@ export default class Article extends Vue {
       document.title = pageTitle
       let item = document.querySelector("meta[name='description']")
       if (item) item.setAttribute('content', pageDescription)
+      this.$store.dispatch('searchArticles', { keyWord: this.gameTitleMin }).then((res) => {
+        this.relations = res.articles.slice(1, 7)
+      })
     }
     )
   }

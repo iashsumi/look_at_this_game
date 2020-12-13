@@ -33,6 +33,15 @@ export default {
   },
   [types.FETCH_ARTICLE_SEARCH_RESULT] (state: any, payload: any) {
     state.article_search_result = payload
+  },
+  [types.FETCH_GAME] (state: any, payload: any) {
+    state.game = payload
+  },
+  [types.FETCH_GAMES] (state: any, payload: any) {
+    state.games = payload
+  },
+  [types.FETCH_GAME_SEARCH_RESULT] (state: any, payload: any) {
+    state.game_search_result = payload
   }
 
 }

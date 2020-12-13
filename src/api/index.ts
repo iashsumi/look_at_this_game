@@ -4,6 +4,7 @@ import Top from './top'
 import Threads from './threads'
 import Articles from './articles'
 import Ranking from './ranking'
+import Games from './games'
 
 export {
   Players,
@@ -11,5 +12,6 @@ export {
   Top,
   Threads,
   Articles,
-  Ranking
+  Ranking,
+  Games
 }

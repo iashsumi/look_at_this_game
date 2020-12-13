@@ -66,16 +66,12 @@ export default class ArticleSearchResult extends Vue {
 
   /** computed */
   private get articles (): any {
-    console.log('HHH')
-    console.log(this.$store.getters.getArticleSearchResult)
     return this.$store.getters.getArticleSearchResult
   }
 
   /** ライフサイクルフック */
   private created () {
     this.word = this.$route.params.word
-    console.log('word')
-    console.log(this.word)
     if (this.$store.getters.getArticleSearchResult && this.$store.getters.getArticleSearchResult.length !== 0) {
       this.disp = true
       return

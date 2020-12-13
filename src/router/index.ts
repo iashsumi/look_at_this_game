@@ -10,6 +10,7 @@ import VideoPlayer from '../views/VideoPlayer.vue'
 import Article from '../views/Article.vue'
 import Articles from '../views/Articles.vue'
 import ArticleSearchResult from '../views/ArticleSearchResult.vue'
+import Game from '../views/Game.vue'
 
 Vue.use(VueRouter)
 
@@ -72,6 +73,12 @@ const routes = [
     name: 'ArticleSearch',
     component: ArticleSearchResult,
     meta: { title: 'スレまとめ', desc: 'ゲーム関連スレのまとめ' }
+  },
+  {
+    path: '/games/:id',
+    name: 'Game',
+    component: Game,
+    meta: { title: 'ゲーム情報', desc: 'ゲーム関連スレのまとめ' }
   }
 ]
 

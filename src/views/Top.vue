@@ -1,5 +1,30 @@
 <template>
   <div id="Top">
+    <!-- <Tweet :target="this.a"></Tweet>
+    <Trend keyWord="プリコネ" geo="JP" search="2018-01-01 2020-10-30"></Trend> -->
+    <h2 align="center">Weekly Game Ranking</h2>
+    <h3 align="center">対象期間 {{this.from}} ~ {{this.to}}</h3>
+    <v-col
+      v-for="(data, index) in this.ranking"
+        :key="data.game.id"
+        cols="12"
+        sm="12"
+    >
+        <b>{{index + 1}} 位</b>
+        <ListItem
+          :id="data.game.id"
+          :title="data.game.title"
+          :publishAt="date(data.game.release_date_at)"
+          :thumbnailUrl="fetchImage(data)"
+          @child-event="goDetailPage($event)"
+        >
+          <template v-slot:option>
+            <div>
+              スレの数: {{data.count}}
+            </div>
+          </template>
+        </ListItem>
+    </v-col>
     <h2 align="center">video</h2>
     <v-container fluid>
       <v-row dense>
@@ -33,7 +58,7 @@
     <v-container fluid>
       <v-row dense>
         <v-col
-          v-for="item in articles"
+          v-for="item in this.articles"
           :key="item.id"
           md="3"
           sm="6"
@@ -60,16 +85,22 @@
 import { Component, Vue, Mixins } from 'vue-property-decorator'
 import ThreadItem from '../components/ThreadItem.vue'
 import PlayerLabel from '../components/PlayerLabel.vue'
+import ListItem from '../components/ListItem.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import Site from '../common/site'
 
 @Component({
   components: {
     ThreadItem,
-    PlayerLabel
+    PlayerLabel,
+    ListItem
   }
 })
 export default class Top extends Mixins(Site) {
+  from: string = ''
+  to: string = ''
+  ranking: Array<any> = []
+  articles: any = []
   /** computed */
   private get top (): any {
     if (this.$store.getters.getTop) {
@@ -78,22 +109,27 @@ export default class Top extends Mixins(Site) {
       return [{ 'videos': [] }, { 'sc_threads': [] }]
     }
   }
-  private get articles (): any {
-    if (this.$store.getters.getArticles) {
-      return this.$store.getters.getArticles
-    } else {
-      return []
-    }
-  }
 
   /** ライフサイクルフック */
   private created () {
     this.$store.dispatch('fetchTop')
-    this.$store.dispatch('fetchArticles')
+    this.$store.dispatch('fetchArticles').then((res) => {
+      this.articles = res.articles.slice(0, 16)
+    })
+    this.$store.dispatch('fetchRanking').then(() => {
+      const res = this.$store.getters.getRanking.weekly_summary
+      this.from = res.from
+      this.to = res.to
+      this.ranking = res.data.slice(0, 10)
+    })
   }
 
   private mounted () {
     document.title = 'Look@Game'
+  }
+
+  goDetailPage (event: any): void {
+    this.$router.push({ name: 'Game', params: { id: String(event) } })
   }
 
   goPlayPage (video): void {
@@ -118,6 +154,14 @@ export default class Top extends Mixins(Site) {
       return ` https://www.latg.site/matome_images/${item.id}/${item.thumbnail_url}`
     }
     return ` https://www.latg.site/default_images/games/${item.game.thumbnail}`
+  }
+
+  date (text): string {
+    if (text) {
+      return text.slice(0, 10)
+    } else {
+      return ''
+    }
   }
 }
 </script>

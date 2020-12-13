@@ -14,10 +14,13 @@ const state = {
   articles: [],
   ranking: [],
   article_search_result: [],
+  game_search_result: [],
+  games: [],
   top: null,
   thread: null,
   video: null,
   article: null,
+  game: null,
   paging_key: null
 }
 

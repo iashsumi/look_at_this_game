@@ -31,5 +31,14 @@ export default {
   },
   getArticleSearchResult: (state: any) => {
     return state.article_search_result
+  },
+  getGame: (state: any) => {
+    return state.game
+  },
+  getGames: (state: any) => {
+    return state.games
+  },
+  getGameSearchResult: (state: any) => {
+    return state.game_search_result
   }
 }
