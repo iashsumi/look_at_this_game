@@ -190,7 +190,7 @@ export default class Article extends Vue {
 
   format (text): string {
     const text1 = text.replace('(deleted an unsolicited ad)', '')
-    const text2 = text1.replace(/<a/g, '<span style="color:#029FDD; font-weight: 900;"')
+    const text2 = text1.replace(/<a ("[^"]*"|'[^']*'|[^'">])*>/g, '<span style="color:#029FDD; font-weight: 900;">')
     const text3 = text2.replace(/<\/a>/g, '</span>')
     const text4 = text3.replace(/<br> <br> /, '')
     return text4
@@ -240,15 +240,15 @@ export default class Article extends Vue {
 }
 
 .font-medium {
-  font-size: 1.2rem
+  font-size: 1.1rem
 }
 
 .font-big {
-  font-size: 1.4rem
+  font-size: 1.2rem
 }
 
 .font-super-big {
-  font-size: 1.6rem
+  font-size: 1.3rem
 }
 
 @media screen and (min-width: 768px) {
